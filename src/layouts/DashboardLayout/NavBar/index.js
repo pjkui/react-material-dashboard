@@ -112,6 +112,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         flexDirection="column"
         p={2}
       >
+        安啦安啦
         <Avatar
           className={classes.avatar}
           component={RouterLink}
@@ -123,12 +124,14 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           color="textPrimary"
           variant="h5"
         >
+          哼哈哼哈
           {user.name}
         </Typography>
         <Typography
           color="textSecondary"
           variant="body2"
         >
+          呵呵呵
           {user.jobTitle}
         </Typography>
       </Box>
@@ -215,7 +218,7 @@ NavBar.propTypes = {
 };
 
 NavBar.defaultProps = {
-  onMobileClose: () => {},
+  onMobileClose: () => { },
   openMobile: false
 };
 

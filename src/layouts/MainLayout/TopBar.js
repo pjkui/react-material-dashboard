@@ -25,6 +25,7 @@ const TopBar = ({ className, ...rest }) => {
       elevation={0}
       {...rest}
     >
+      哈哈哈哈
       <Toolbar className={classes.toolbar}>
         <RouterLink to="/">
           <Logo />

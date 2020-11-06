@@ -9,15 +9,22 @@ import {
   Hidden,
   IconButton,
   Toolbar,
-  makeStyles
+  Typography,
+  makeStyles,
+  colors
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
+// import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
 import InputIcon from '@material-ui/icons/Input';
-import Logo from 'src/components/Logo';
+// import Logo from 'src/components/Logo';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 
 const useStyles = makeStyles(() => ({
-  root: {},
+  root: {
+    backgroundColor: colors.blue[900],
+  },
   avatar: {
     width: 60,
     height: 60
@@ -40,8 +47,12 @@ const TopBar = ({
     >
       <Toolbar>
         <RouterLink to="/">
-          <Logo />
+          {/* <Logo /> */}
+          <DashboardIcon />
         </RouterLink>
+        <Typography variant="h3" component="h2">
+          大数据
+        </Typography>
         <Box flexGrow={1} />
         <Hidden mdDown>
           <IconButton color="inherit">
@@ -50,11 +61,12 @@ const TopBar = ({
               color="primary"
               variant="dot"
             >
-              <NotificationsIcon />
+              <AccountCircleIcon />
+              sys_admin
             </Badge>
           </IconButton>
           <IconButton color="inherit">
-            <InputIcon />
+            <PowerSettingsNewIcon />
           </IconButton>
         </Hidden>
         <Hidden lgUp>
