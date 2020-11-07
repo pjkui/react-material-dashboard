@@ -6,6 +6,7 @@ const theme = createMuiTheme({
   palette: {
     background: {
       dark: '#1a2380',
+      dark2: '#252ea3',
       default: colors.common.white,
       paper: colors.common.white
     },
@@ -16,14 +17,13 @@ const theme = createMuiTheme({
       main: colors.indigo[500]
     },
     text: {
-      primary: colors.blueGrey[900],
+      primary: colors.grey[600],
       secondary: colors.blueGrey[600]
-    },
-
+    }
   },
   props: {
     colors: {
-      TopBarColor: '#161b74',
+      TopBarColor: '#161b74'
     }
   },
   shadows,
