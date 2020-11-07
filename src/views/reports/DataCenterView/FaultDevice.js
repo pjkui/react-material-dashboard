@@ -31,11 +31,12 @@ const FaultDevice = ({ className, ...rest }) => {
   const data = {
     datasets: [
       {
-        data: [63, 15, 22],
+        data: [24568, 12345, 9875, 4253],
         backgroundColor: [
-          colors.indigo[500],
-          colors.red[600],
-          colors.orange[600]
+          colors.cyan['A400'],
+          colors.purple['A400'],
+          colors.orange[500],
+          colors.common.white
         ],
         borderWidth: 0,
         borderColor: colors.common.white,

@@ -33,9 +33,10 @@ const FaultLevel = ({ className, ...rest }) => {
       {
         data: [24568, 12345, 9875, 4253],
         backgroundColor: [
-          colors.indigo[500],
-          colors.red[600],
-          colors.orange[600]
+          colors.orange[900],
+          colors.yellow[500],
+          colors.green[500],
+          colors.blue[600]
         ],
         borderWidth: 0,
         borderColor: colors.common.white,
