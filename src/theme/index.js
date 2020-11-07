@@ -18,6 +18,13 @@ const theme = createMuiTheme({
     text: {
       primary: colors.blueGrey[900],
       secondary: colors.blueGrey[600]
+    },
+
+  },
+  props: {
+    colors: {
+      TopBarColor: '#1a2382',
+      TopBarColor1: '#f00',
     }
   },
   shadows,

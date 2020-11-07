@@ -13,7 +13,9 @@ const Page = forwardRef(({
       {...rest}
     >
       <Helmet>
-        <title>{title}</title>
+        <title>
+          {title}
+        </title>
       </Helmet>
       {children}
     </div>

@@ -21,9 +21,10 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: colors.blue[900],
+    backgroundColor: theme.props.colors.TopBarColor,
+    oldColor: colors.blue[100]
   },
   avatar: {
     width: 60,
@@ -50,11 +51,11 @@ const TopBar = ({
           {/* <Logo /> */}
           <DashboardIcon />
         </RouterLink>
-        <Typography variant="h3" component="h2">
+        <Typography variant="h4" component="h4">
           大数据
         </Typography>
         <Box flexGrow={1} />
-        <Hidden mdDown>
+        <Hidden smDown>
           <IconButton color="inherit">
             <Badge
               badgeContent={notifications.length}
@@ -62,19 +63,25 @@ const TopBar = ({
               variant="dot"
             >
               <AccountCircleIcon />
-              sys_admin
+              <Typography variant="h6" component="h6">
+                &nbsp;sys_admin
+              </Typography>
             </Badge>
           </IconButton>
           <IconButton color="inherit">
             <PowerSettingsNewIcon />
           </IconButton>
         </Hidden>
-        <Hidden lgUp>
+        <Hidden mdUp>
           <IconButton
             color="inherit"
             onClick={onMobileNavOpen}
           >
-            <MenuIcon />
+            <AccountCircleIcon />
+
+            <PowerSettingsNewIcon />
+
+            {/* <MenuIcon /> */}
           </IconButton>
         </Hidden>
       </Toolbar>
