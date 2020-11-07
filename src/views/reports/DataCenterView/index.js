@@ -5,14 +5,13 @@ import {
   makeStyles
 } from '@material-ui/core';
 import Page from 'src/components/Page';
-import Budget from './Budget';
-import LatestOrders from './LatestOrders';
-import LatestProducts from './LatestProducts';
-import Sales from './Sales';
-import TasksProgress from './TasksProgress';
-import TotalCustomers from './TotalCustomers';
-import TotalProfit from './TotalProfit';
-import TrafficByDevice from './TrafficByDevice';
+import FaultLevel from './FaultLevel';
+import FaultDevice from './FaultDevice';
+import ApStatistics from './ApStatistics';
+import EnvTrend from './EnvTrend';
+import CallTimes from './CallTimes';
+import VideoRcg from './VideoRcg';
+import PowerTrend from './PowerTrend';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,7 +42,7 @@ const DataCenter = () => {
             xl={3}
             xs={12}
           >
-            <Budget />
+            <FaultLevel />
           </Grid>
           <Grid
             item
@@ -52,25 +51,16 @@ const DataCenter = () => {
             xl={3}
             xs={12}
           >
-            <TotalCustomers />
+            <FaultDevice />
           </Grid>
           <Grid
             item
-            lg={3}
-            sm={6}
-            xl={3}
+            lg={6}
+            sm={12}
+            xl={6}
             xs={12}
           >
-            <TasksProgress />
-          </Grid>
-          <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
-            <TotalProfit />
+            <PowerTrend />
           </Grid>
           <Grid
             item
@@ -79,7 +69,7 @@ const DataCenter = () => {
             xl={9}
             xs={12}
           >
-            <Sales />
+            <VideoRcg />
           </Grid>
           <Grid
             item
@@ -88,7 +78,7 @@ const DataCenter = () => {
             xl={3}
             xs={12}
           >
-            <TrafficByDevice />
+            <CallTimes />
           </Grid>
           <Grid
             item
@@ -97,7 +87,7 @@ const DataCenter = () => {
             xl={3}
             xs={12}
           >
-            <LatestProducts />
+            <EnvTrend />
           </Grid>
           <Grid
             item
@@ -106,7 +96,7 @@ const DataCenter = () => {
             xl={9}
             xs={12}
           >
-            <LatestOrders />
+            <ApStatistics />
           </Grid>
         </Grid>
       </Container>

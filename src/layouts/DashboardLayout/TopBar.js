@@ -13,9 +13,9 @@ import {
   makeStyles,
   colors
 } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+// import MenuIcon from '@material-ui/icons/Menu';
 // import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
-import InputIcon from '@material-ui/icons/Input';
+// import InputIcon from '@material-ui/icons/Input';
 // import Logo from 'src/components/Logo';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -52,7 +52,7 @@ const TopBar = ({
           <DashboardIcon />
         </RouterLink>
         <Typography variant="h4" component="h4">
-          大数据
+          &nbsp;大数据
         </Typography>
         <Box flexGrow={1} />
         <Hidden smDown>
@@ -78,9 +78,7 @@ const TopBar = ({
             onClick={onMobileNavOpen}
           >
             <AccountCircleIcon />
-
             <PowerSettingsNewIcon />
-
             {/* <MenuIcon /> */}
           </IconButton>
         </Hidden>

@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const TrafficByDevice = ({ className, ...rest }) => {
+const FaultDevice = ({ className, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -41,7 +41,7 @@ const TrafficByDevice = ({ className, ...rest }) => {
         hoverBorderColor: colors.common.white
       }
     ],
-    labels: ['Desktop', 'Tablet', 'Mobile']
+    labels: ['紧急', '重要', '次要', '提示']
   };
 
   const options = {
@@ -68,19 +68,25 @@ const TrafficByDevice = ({ className, ...rest }) => {
 
   const devices = [
     {
-      title: 'Desktop',
+      title: '紧急',
       value: 63,
       icon: LaptopMacIcon,
       color: colors.indigo[500]
     },
     {
-      title: 'Tablet',
+      title: '重要',
       value: 15,
       icon: TabletIcon,
       color: colors.red[600]
     },
     {
-      title: 'Mobile',
+      title: '次要',
+      value: 23,
+      icon: PhoneIcon,
+      color: colors.orange[600]
+    },
+    {
+      title: '次要',
       value: 23,
       icon: PhoneIcon,
       color: colors.orange[600]
@@ -132,7 +138,6 @@ const TrafficByDevice = ({ className, ...rest }) => {
                 variant="h2"
               >
                 {value}
-                %
               </Typography>
             </Box>
           ))}
@@ -142,8 +147,8 @@ const TrafficByDevice = ({ className, ...rest }) => {
   );
 };
 
-TrafficByDevice.propTypes = {
+FaultDevice.propTypes = {
   className: PropTypes.string
 };
 
-export default TrafficByDevice;
+export default FaultDevice;

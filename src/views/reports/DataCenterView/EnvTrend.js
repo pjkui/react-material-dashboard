@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Sales = ({ className, ...rest }) => {
+const EnvTrend = ({ className, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -143,8 +143,8 @@ const Sales = ({ className, ...rest }) => {
   );
 };
 
-Sales.propTypes = {
+EnvTrend.propTypes = {
   className: PropTypes.string
 };
 
-export default Sales;
+export default EnvTrend;

@@ -35,7 +35,8 @@ const useStyles = makeStyles((theme) => ({
 
 const DashboardLayout = () => {
   const classes = useStyles();
-  const [isMobileNavOpen, setMobileNavOpen] = useState(false);
+  // const [isMobileNavOpen, setMobileNavOpen] = useState(false);
+  const [setMobileNavOpen] = useState(false);
 
   return (
     <div className={classes.root}>
@@ -47,7 +48,6 @@ const DashboardLayout = () => {
       <div className={classes.wrapper}>
         <div className={classes.contentContainer}>
           <div className={classes.content}>
-            呀呀呀
             <Outlet />
           </div>
         </div>
