@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 import echarts from 'echarts';
 
 export default class FaultLevelPieChart extends React.Component {
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+  }
+
   componentDidMount() {
-    this.myChart = echarts.init(document.getElementById('test-e1'));
+    this.myChart = echarts.init(this.myRef.current);
     this.renderData();
   }
 
@@ -18,10 +23,10 @@ export default class FaultLevelPieChart extends React.Component {
     return (
       <div
         style={{
-          width: `${this.props.width}px`,
-          height: `${this.props.height}px`
+          width: `${this.props.width}%`,
+          height: `${this.props.height}%`
         }}
-        id="test-e1"
+        ref={this.myRef}
       />
     );
   }

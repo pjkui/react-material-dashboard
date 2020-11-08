@@ -1,144 +1,200 @@
 import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { Bar } from 'react-chartjs-2';
 import {
   Box,
   Button,
   Card,
   CardContent,
   CardHeader,
-  Divider,
   useTheme,
   makeStyles,
-  colors
+  colors,
+  ButtonGroup
 } from '@material-ui/core';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import FaultLevelPieChart from './FaultLevePieChart';
 
-const useStyles = makeStyles(() => ({
-  root: {}
+const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: theme.palette.background.dark
+  }
 }));
 
 const PowerTrend = ({ className, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
-
-  const data = {
-    datasets: [
-      {
-        backgroundColor: colors.indigo[500],
-        data: [18, 5, 19, 27, 29, 19, 20],
-        label: 'This year'
-      },
-      {
-        backgroundColor: colors.grey[200],
-        data: [11, 20, 12, 29, 30, 25, 13],
-        label: 'Last year'
-      }
-    ],
-    labels: ['1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug']
-  };
-
   const options = {
-    animation: false,
-    cornerRadius: 20,
-    layout: { padding: 0 },
-    legend: { display: false },
-    maintainAspectRatio: false,
-    responsive: true,
-    scales: {
-      xAxes: [
-        {
-          barThickness: 12,
-          maxBarThickness: 10,
-          barPercentage: 0.5,
-          categoryPercentage: 0.5,
-          ticks: {
-            fontColor: theme.palette.text.secondary
-          },
-          gridLines: {
-            display: false,
-            drawBorder: false
-          }
+    xAxis: {
+      type: 'category',
+      axisLine: {
+        lineStyle: {
+          color: colors.common.white
         }
-      ],
-      yAxes: [
+      },
+      textStyle: {
+        color: colors.common.white
+      },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          color: colors.common.white
+        }
+      },
+      boundaryGap: ['20%', '50%'],
+      data: [
         {
-          ticks: {
-            fontColor: theme.palette.text.secondary,
-            beginAtZero: true,
-            min: 0
-          },
-          gridLines: {
-            borderDash: [2],
-            borderDashOffset: [2],
-            color: theme.palette.divider,
-            drawBorder: false,
-            zeroLineBorderDash: [2],
-            zeroLineBorderDashOffset: [2],
-            zeroLineColor: theme.palette.divider
+          value: '00:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '00:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '02:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '04:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '06:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '08:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '10:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '12:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '14:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '16:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '18:00',
+          textStyle: {
+            color: colors.common.white
           }
         }
       ]
     },
-    tooltips: {
-      backgroundColor: theme.palette.background.default,
-      bodyFontColor: theme.palette.text.secondary,
-      borderColor: theme.palette.divider,
-      borderWidth: 1,
-      enabled: true,
-      footerFontColor: theme.palette.text.secondary,
-      intersect: false,
-      mode: 'index',
-      titleFontColor: theme.palette.text.primary
-    }
+    yAxis: {
+      type: 'value',
+      axisLine: {
+        lineStyle: {
+          color: colors.common.white
+        }
+      },
+      axisLabel: {
+        color: colors.common.white
+      },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          color: colors.common.white
+        }
+      }
+    },
+    tooltip: {
+      show: true,
+      trigger: 'item',
+      position: 'top',
+      formatter: '{c0} <b>{b0}</b>',
+      backgroundColor: '#ff0',
+      borderColor: '#333',
+      borderWidth: 2,
+      textStyle: {
+        color: '#f0f'
+      }
+    },
+    series: [
+      {
+        data: [82.0, 93.2, 90.1, 93.4, 12.9, 173.3, 13.2, 100.0, 400],
+        type: 'line',
+        lineStyle: {
+          width: 6,
+          shadowColor: '#f00',
+          shadowOffsetX: 1,
+          shadowOffsetY: 2,
+          shadowBlur: 4,
+          color: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
+            colorStops: [
+              {
+                offset: 0,
+                color: 'red' // 0% 处的颜色
+              },
+              {
+                offset: 1,
+                color: 'blue' // 100% 处的颜色
+              }
+            ],
+
+            global: false // 缺省为 false
+          }
+        },
+
+        smooth: true
+      }
+    ]
   };
 
   return (
-    <Card
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
+    <Card className={clsx(classes.root, className)} {...rest}>
       <CardHeader
-        action={(
-          <Button
-            endIcon={<ArrowDropDownIcon />}
-            size="small"
-            variant="text"
+        action={
+          <ButtonGroup
+            color="secondary"
+            aria-label="outlined secondary button group"
           >
-            Last 7 days
-          </Button>
-        )}
-        title="Latest Sales"
+            <Button>One</Button>
+            <Button>Two</Button>
+            <Button>Three</Button>
+          </ButtonGroup>
+        }
+        title="用电趋势"
       />
-      <Divider />
       <CardContent>
-        <Box
-          height={400}
-          position="relative"
-        >
-          <Bar
-            data={data}
-            options={options}
-          />
+        <Box height={300} position="relative">
+          <FaultLevelPieChart width={100} height={100} options={options} />
         </Box>
       </CardContent>
-      <Divider />
-      <Box
-        display="flex"
-        justifyContent="flex-end"
-        p={2}
-      >
-        <Button
-          color="primary"
-          endIcon={<ArrowRightIcon />}
-          size="small"
-          variant="text"
-        >
-          Overview
-        </Button>
-      </Box>
     </Card>
   );
 };

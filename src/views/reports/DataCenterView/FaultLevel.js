@@ -168,7 +168,7 @@ const FaultLevel = ({ className, ...rest }) => {
           <Grid item lg={6} sm={12} md={6}>
             <Box height={200} position="relative">
               {/* <Doughnut data={data} options={options} /> */}
-              <FaultLevelPieChart height={200} width={200} options={options} />
+              <FaultLevelPieChart height={100} width={100} options={options} />
             </Box>
             {/* <Box height={200} position="relative"> */}
             {/* <PieChart /> */}
