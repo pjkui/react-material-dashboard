@@ -13,18 +13,27 @@ export default class FaultLevelPieChart extends React.Component {
     this.renderData();
   }
 
+  // eslint-disable-next-line camelcase
+
+  shouldComponentUpdate() {
+    this.renderData();
+    return true;
+  }
+
   renderData() {
     // 指定图表的配置项和数据
     // 使用刚指定的配置项和数据显示图表。
-    this.myChart.setOption(this.props.options);
+    const { options } = this.props;
+    this.myChart.setOption(options);
   }
 
   render() {
+    const { width, height } = this.props;
     return (
       <div
         style={{
-          width: `${this.props.width}%`,
-          height: `${this.props.height}%`
+          width: `${width}%`,
+          height: `${height}%`
         }}
         ref={this.myRef}
       />
