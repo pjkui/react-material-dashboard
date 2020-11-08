@@ -1,7 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { Doughnut } from 'react-chartjs-2';
 import {
   Box,
   Card,
@@ -16,7 +15,7 @@ import {
 // import LaptopMacIcon from '@material-ui/icons/LaptopMac';
 // import PhoneIcon from '@material-ui/icons/Phone';
 // import TabletIcon from '@material-ui/icons/Tablet';
-import CropSquare from '@material-ui/icons/CropSquare';
+import CropSquare from '@material-ui/icons/CropSquareOutlined';
 import FaultLevelPieChart from './FaultLevePieChart';
 // import { Widgets } from '@material-ui/icons';
 // import PieChart from './PieChart';
@@ -37,25 +36,29 @@ const FaultLevel = ({ className, ...rest }) => {
       title: '紧急',
       value: 24568,
       icon: CropSquare,
-      color: colors.common.white
+      color: colors.red[900],
+      textColor: colors.common.white
     },
     {
       title: '重要',
       value: 12345,
       icon: CropSquare,
-      color: colors.common.white
+      color: colors.yellow[900],
+      textColor: colors.common.white
     },
     {
       title: '次要',
       value: 9875,
       icon: CropSquare,
-      color: colors.common.white
+      color: colors.green[900],
+      textColor: colors.common.white
     },
     {
       title: '提示',
       value: 4253,
       icon: CropSquare,
-      color: colors.common.white
+      color: colors.common.white,
+      textColor: colors.common.white
     }
   ];
   const options = {
@@ -172,19 +175,29 @@ const FaultLevel = ({ className, ...rest }) => {
             {/* </Box> */}
           </Grid>
           <Grid item lg={6} sm={6} md={6}>
-            {devices.map(({ color, icon: Icon, title, value }) => (
+            {devices.map(({ color, icon: Icon, title, value, textColor }) => (
               <Box key={title} p={1} textAlign="center">
                 <Grid container spacing={1}>
                   <Grid item lg={4} sm={4} md={4}>
-                    <Icon color="action" />
-                  </Grid>
-                  <Grid item lg={4} sm={4} md={4}>
+                    {/* <Icon style={{ color }} /> */}
+
                     <Typography color="textPrimary" variant="h6">
+                      <span
+                        style={{
+                          width: '8px',
+                          height: '8px',
+                          display: 'inline-block',
+                          marginRight: '6px',
+                          backgroundColor: color
+                        }}
+                      >
+                        {' '}
+                      </span>
                       {title}
                     </Typography>
                   </Grid>
                   <Grid item lg={4} sm={4} md={4}>
-                    <Typography style={{ color }} variant="h6">
+                    <Typography style={{ color: textColor }} variant="h6">
                       {value}
                     </Typography>
                   </Grid>
