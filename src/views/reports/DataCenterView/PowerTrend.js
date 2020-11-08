@@ -401,7 +401,47 @@ const PowerTrend = ({ className, ...rest }) => {
     odata.series[0].data = monthData;
     setOptions(odata);
   }
-  function showYearData(e) {}
+  function showYearData(e) {
+    console.log(e);
+    const xData = [
+      {
+        value: '2016',
+        textStyle: {
+          color: colors.common.white
+        }
+      },
+      {
+        value: '2017',
+        textStyle: {
+          color: colors.common.white
+        }
+      },
+      {
+        value: '2018',
+        textStyle: {
+          color: colors.common.white
+        }
+      },
+      {
+        value: '2019',
+        textStyle: {
+          color: colors.common.white
+        }
+      },
+      {
+        value: '2020',
+        textStyle: {
+          color: colors.common.white
+        }
+      }
+    ];
+    const yearData = [3.2, 13.4, 10.9, 61.2, 11.7];
+    const odata = { ...optionsRaw };
+    odata.xAxis.data = xData;
+    odata.series[0].data = yearData;
+    setOptions(odata);
+  }
+
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
       <CardHeader
