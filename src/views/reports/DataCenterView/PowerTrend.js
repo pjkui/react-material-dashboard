@@ -107,6 +107,18 @@ const PowerTrend = ({ className, ...rest }) => {
           textStyle: {
             color: colors.common.white
           }
+        },
+        {
+          value: '20:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '22:00',
+          textStyle: {
+            color: colors.common.white
+          }
         }
       ]
     },
@@ -141,7 +153,20 @@ const PowerTrend = ({ className, ...rest }) => {
     },
     series: [
       {
-        data: [82.0, 93.2, 90.1, 93.4, 12.9, 173.3, 13.2, 100.0, 400],
+        data: [
+          0,
+          10.2,
+          20.1,
+          13.4,
+          10.9,
+          30.3,
+          6.2,
+          9.0,
+          11.2,
+          36.8,
+          11.7,
+          5.6
+        ],
         type: 'line',
         lineStyle: {
           width: 6,
