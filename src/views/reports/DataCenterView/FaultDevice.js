@@ -13,11 +13,12 @@ import {
   useTheme,
   Grid
 } from '@material-ui/core';
-import LaptopMacIcon from '@material-ui/icons/LaptopMac';
-import PhoneIcon from '@material-ui/icons/Phone';
-import TabletIcon from '@material-ui/icons/Tablet';
+// import LaptopMacIcon from '@material-ui/icons/LaptopMac';
+// import PhoneIcon from '@material-ui/icons/Phone';
+// import TabletIcon from '@material-ui/icons/Tablet';
+import CropSquare from '@material-ui/icons/CropSquare';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     height: '100%',
     backgroundColor: theme.palette.background.dark2
@@ -72,25 +73,25 @@ const FaultDevice = ({ className, ...rest }) => {
     {
       title: '摄像头',
       value: 24568,
-      icon: LaptopMacIcon,
+      icon: CropSquare,
       color: colors.common.white
     },
     {
       title: '户外屏',
       value: 12345,
-      icon: TabletIcon,
+      icon: CropSquare,
       color: colors.common.white
     },
     {
       title: '单灯控制器',
       value: 9875,
-      icon: PhoneIcon,
+      icon: CropSquare,
       color: colors.common.white
     },
     {
       title: '其他',
       value: 4253,
-      icon: PhoneIcon,
+      icon: CropSquare,
       color: colors.common.white
     }
   ];

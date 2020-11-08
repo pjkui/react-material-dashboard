@@ -23,6 +23,7 @@
     }
   },
   "rules": {
+    "dot-notation":"warn",
     "arrow-body-style": "off",
     "comma-dangle": "off",
     "import/no-unresolved": "off",

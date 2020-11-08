@@ -13,11 +13,15 @@ import {
   useTheme,
   Grid
 } from '@material-ui/core';
-import LaptopMacIcon from '@material-ui/icons/LaptopMac';
-import PhoneIcon from '@material-ui/icons/Phone';
-import TabletIcon from '@material-ui/icons/Tablet';
+// import LaptopMacIcon from '@material-ui/icons/LaptopMac';
+// import PhoneIcon from '@material-ui/icons/Phone';
+// import TabletIcon from '@material-ui/icons/Tablet';
+import CropSquare from '@material-ui/icons/CropSquare';
+import FaultLevelPieChart from './FaultLevePieChart';
+// import { Widgets } from '@material-ui/icons';
+// import PieChart from './PieChart';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     height: '100%',
     backgroundColor: theme.palette.background.dark2
@@ -28,72 +32,130 @@ const FaultLevel = ({ className, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
 
-  const data = {
-    datasets: [
-      {
-        data: [24568, 12345, 9875, 4253],
-        backgroundColor: [
-          colors.orange[900],
-          colors.yellow[500],
-          colors.green[500],
-          colors.blue[600]
-        ],
-        borderWidth: 0,
-        borderColor: colors.common.white,
-        hoverBorderColor: colors.common.white
-      }
-    ],
-    labels: ['紧急', '重要', '次要', '提示']
-  };
-
-  const options = {
-    animation: false,
-    cutoutPercentage: 80,
-    layout: { padding: 0 },
-    legend: {
-      display: false
-    },
-    maintainAspectRatio: false,
-    responsive: true,
-    tooltips: {
-      backgroundColor: theme.palette.background.default,
-      bodyFontColor: theme.palette.text.secondary,
-      borderColor: theme.palette.divider,
-      borderWidth: 1,
-      enabled: true,
-      footerFontColor: theme.palette.text.secondary,
-      intersect: false,
-      mode: 'index',
-      titleFontColor: theme.palette.text.primary
-    }
-  };
-
   const devices = [
     {
       title: '紧急',
       value: 24568,
-      icon: LaptopMacIcon,
+      icon: CropSquare,
       color: colors.common.white
     },
     {
       title: '重要',
       value: 12345,
-      icon: TabletIcon,
+      icon: CropSquare,
       color: colors.common.white
     },
     {
       title: '次要',
       value: 9875,
-      icon: PhoneIcon,
+      icon: CropSquare,
       color: colors.common.white
     },
     {
-      title: '次要',
+      title: '提示',
       value: 4253,
-      icon: PhoneIcon,
+      icon: CropSquare,
       color: colors.common.white
     }
   ];
+  const options = {
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a} <br/>{b}: {c} ({d}%)'
+    },
+    legend: {
+      show: false,
+      orient: 'vertical',
+      left: 10,
+      data: [
+        { value: 24568, name: '紧急' },
+        { value: 12345, name: '重要' },
+        { value: 9875, name: '次要' },
+        { value: 4253, name: '提示' }
+      ],
+      // 使用回调函数
+      // eslint-disable-next-line func-names
+      formatter: (name) => {
+        // debugger;
+        console.log(options, this);
+        const datas = options.legend.data;
+        for (let index = 0; index < datas.length; index++) {
+          const element = datas[index];
+          if (element && element.name === name) {
+            const newName = `${name} ${element.value}`;
+            return newName;
+          }
+        }
+        return name;
+      }
+    },
+    title: {
+      text: '12345',
+      subtext: '总数',
+      left: 'center',
+      top: 'middle',
+      textStyle: {
+        color: theme.palette.text.chartTitle,
+        fontSize: 30
+      }
+    },
+    series: [
+      {
+        name: '访问来源',
+        type: 'pie',
+        radius: ['80%', '98%'],
+        avoidLabelOverlap: false,
+        hoverOffset: 1,
+        label: {
+          show: false,
+          position: 'center'
+        },
+        emphasis: {
+          label: {
+            show: false,
+            fontSize: '30',
+            fontWeight: 'bold'
+          }
+        },
+        labelLine: {
+          show: false
+        },
+        data: [
+          {
+            value: 24568,
+            name: '紧急',
+            itemStyle: {
+              // 径向渐变，前三个参数分别是圆心 x, y 和半径，取值同线性渐变
+              color: {
+                type: 'radial',
+                x: 0.5,
+                y: 0.5,
+                r: 0.5,
+                colorStops: [
+                  {
+                    offset: 0,
+                    color: 'red' // 0% 处的颜色
+                  },
+                  {
+                    offset: 1,
+                    color: 'blue' // 100% 处的颜色
+                  }
+                ],
+                global: false // 缺省为 false
+              },
+              shadowColor: 'rgba(255, 255, 255, 0.5)',
+              shadowBlur: 1
+              // borderColor: '#FFFFFF88',
+              // borderWidth: 1
+            }
+          },
+          { value: 12345, name: '重要' },
+          { value: 9875, name: '次要' },
+          { value: 4253, name: '提示' }
+        ]
+      }
+    ]
+  };
 
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
@@ -102,8 +164,12 @@ const FaultLevel = ({ className, ...rest }) => {
         <Grid container spacing={3}>
           <Grid item lg={6} sm={12} md={6}>
             <Box height={200} position="relative">
-              <Doughnut data={data} options={options} />
+              {/* <Doughnut data={data} options={options} /> */}
+              <FaultLevelPieChart height={200} width={200} options={options} />
             </Box>
+            {/* <Box height={200} position="relative"> */}
+            {/* <PieChart /> */}
+            {/* </Box> */}
           </Grid>
           <Grid item lg={6} sm={6} md={6}>
             {devices.map(({ color, icon: Icon, title, value }) => (

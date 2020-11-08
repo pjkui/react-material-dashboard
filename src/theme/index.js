@@ -18,7 +18,8 @@ const theme = createMuiTheme({
     },
     text: {
       primary: colors.grey[600],
-      secondary: colors.blueGrey[600]
+      secondary: colors.blueGrey[600],
+      chartTitle: colors.blue['A400']
     }
   },
   props: {
