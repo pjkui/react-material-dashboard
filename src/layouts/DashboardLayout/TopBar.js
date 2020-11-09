@@ -65,6 +65,7 @@ const BootstrapInput = withStyles((theme) => ({
     },
   },
 }))(InputBase);
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.props.colors.TopBarColor,
