@@ -12,7 +12,7 @@ import {
   colors,
   ButtonGroup
 } from '@material-ui/core';
-import FaultLevelPieChart from './FaultLevePieChart';
+import EchartRender from './EchartRender';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -461,7 +461,7 @@ const PowerTrend = ({ className, ...rest }) => {
       />
       <CardContent>
         <Box height={300} position="relative">
-          <FaultLevelPieChart width={100} height={100} options={options} />
+          <EchartRender width={100} height={100} options={options} />
         </Box>
       </CardContent>
     </Card>

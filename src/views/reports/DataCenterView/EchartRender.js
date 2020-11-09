@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import echarts from 'echarts';
 
-export default class FaultLevelPieChart extends React.Component {
+export default class EchartRender extends React.Component {
   constructor(props) {
     super(props);
     this.myRef = React.createRef();
@@ -40,7 +40,7 @@ export default class FaultLevelPieChart extends React.Component {
     );
   }
 }
-FaultLevelPieChart.propTypes = {
+EchartRender.propTypes = {
   className: PropTypes.string,
   options: PropTypes.object,
   height: PropTypes.number,

@@ -16,7 +16,7 @@ import {
 // import PhoneIcon from '@material-ui/icons/Phone';
 // import TabletIcon from '@material-ui/icons/Tablet';
 import CropSquare from '@material-ui/icons/CropSquareOutlined';
-import FaultLevelPieChart from './FaultLevePieChart';
+import EchartRender from './EchartRender';
 // import { Widgets } from '@material-ui/icons';
 // import PieChart from './PieChart';
 
@@ -168,14 +168,14 @@ const FaultLevel = ({ className, ...rest }) => {
           <Grid item lg={6} sm={12} md={6}>
             <Box height={200} position="relative">
               {/* <Doughnut data={data} options={options} /> */}
-              <FaultLevelPieChart height={100} width={100} options={options} />
+              <EchartRender height={100} width={100} options={options} />
             </Box>
             {/* <Box height={200} position="relative"> */}
             {/* <PieChart /> */}
             {/* </Box> */}
           </Grid>
           <Grid item lg={6} sm={6} md={6}>
-            {devices.map(({ color, icon: Icon, title, value, textColor }) => (
+            {devices.map(({ color, title, value, textColor }) => (
               <Box key={title} p={1} textAlign="center">
                 <Grid container spacing={1}>
                   <Grid item lg={4} sm={4} md={4}>
