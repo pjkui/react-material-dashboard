@@ -28,7 +28,9 @@ export default class EchartRender extends React.Component {
   }
 
   render() {
-    const { width, height } = this.props;
+    let { width, height } = this.props;
+    width = width || 100;
+    height = height || 100;
     return (
       <div
         style={{
