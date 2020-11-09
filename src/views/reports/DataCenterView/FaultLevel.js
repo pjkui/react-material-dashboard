@@ -12,13 +12,7 @@ import {
   useTheme,
   Grid
 } from '@material-ui/core';
-// import LaptopMacIcon from '@material-ui/icons/LaptopMac';
-// import PhoneIcon from '@material-ui/icons/Phone';
-// import TabletIcon from '@material-ui/icons/Tablet';
-import CropSquare from '@material-ui/icons/CropSquareOutlined';
 import EchartRender from './EchartRender';
-// import { Widgets } from '@material-ui/icons';
-// import PieChart from './PieChart';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,36 +29,32 @@ const FaultLevel = ({ className, ...rest }) => {
     {
       title: '紧急',
       value: 24568,
-      icon: CropSquare,
-      color: colors.red[900],
+      color: colors.orange['800'],
       textColor: colors.common.white
     },
     {
       title: '重要',
       value: 12345,
-      icon: CropSquare,
-      color: colors.yellow[900],
+      color: colors.yellow['A400'],
       textColor: colors.common.white
     },
     {
       title: '次要',
       value: 9875,
-      icon: CropSquare,
-      color: colors.green[900],
+      color: colors.green['A400'],
       textColor: colors.common.white
     },
     {
       title: '提示',
       value: 4253,
-      icon: CropSquare,
-      color: colors.common.white,
+      color: colors.blue['A400'],
       textColor: colors.common.white
     }
   ];
   const options = {
     tooltip: {
       trigger: 'item',
-      formatter: '{a} <br/>{b}: {c} ({d}%)'
+      formatter: '{a}<br/>{b}:{c}({d}%)'
     },
     legend: {
       show: false,
@@ -104,10 +94,10 @@ const FaultLevel = ({ className, ...rest }) => {
     },
     series: [
       {
-        name: '访问来源',
+        name: '故障级别分布',
         type: 'pie',
         radius: ['80%', '98%'],
-        avoidLabelOverlap: false,
+        avoidLabelOverlap: true,
         hoverOffset: 1,
         label: {
           show: false,
@@ -128,33 +118,38 @@ const FaultLevel = ({ className, ...rest }) => {
             value: 24568,
             name: '紧急',
             itemStyle: {
-              // 径向渐变，前三个参数分别是圆心 x, y 和半径，取值同线性渐变
-              color: {
-                type: 'radial',
-                x: 0.5,
-                y: 0.5,
-                r: 0.5,
-                colorStops: [
-                  {
-                    offset: 0,
-                    color: 'red' // 0% 处的颜色
-                  },
-                  {
-                    offset: 1,
-                    color: 'blue' // 100% 处的颜色
-                  }
-                ],
-                global: false // 缺省为 false
-              },
+              color: colors.orange['800'],
               shadowColor: 'rgba(255, 255, 255, 0.5)',
               shadowBlur: 1
-              // borderColor: '#FFFFFF88',
-              // borderWidth: 1
             }
           },
-          { value: 12345, name: '重要' },
-          { value: 9875, name: '次要' },
-          { value: 4253, name: '提示' }
+          {
+            value: 12345,
+            name: '重要',
+            itemStyle: {
+              color: colors.yellow['A400'],
+              shadowColor: 'rgba(255, 255, 255, 0.5)',
+              shadowBlur: 1
+            }
+          },
+          {
+            value: 9875,
+            name: '次要',
+            itemStyle: {
+              color: colors.green['A400'],
+              shadowColor: 'rgba(255, 255, 255, 0.5)',
+              shadowBlur: 1
+            }
+          },
+          {
+            value: 4253,
+            name: '提示',
+            itemStyle: {
+              color: colors.blue['A400'],
+              shadowColor: 'rgba(255, 255, 255, 0.5)',
+              shadowBlur: 1
+            }
+          }
         ]
       }
     ]
@@ -165,22 +160,21 @@ const FaultLevel = ({ className, ...rest }) => {
       <CardHeader title="故障级别分布(个)" />
       <CardContent>
         <Grid container spacing={3}>
-          <Grid item lg={6} sm={12} md={6}>
+          <Grid item sm={6} md={6} lg={6}>
             <Box height={200} position="relative">
-              {/* <Doughnut data={data} options={options} /> */}
-              <EchartRender height={100} width={100} options={options} />
+              <EchartRender
+                height={100}
+                width={100}
+                options={options}
+                margin="0 auto"
+              />
             </Box>
-            {/* <Box height={200} position="relative"> */}
-            {/* <PieChart /> */}
-            {/* </Box> */}
           </Grid>
-          <Grid item lg={6} sm={6} md={6}>
+          <Grid item sm={6} md={6} lg={6}>
             {devices.map(({ color, title, value, textColor }) => (
               <Box key={title} p={1} textAlign="center">
-                <Grid container spacing={1}>
-                  <Grid item lg={4} sm={4} md={4}>
-                    {/* <Icon style={{ color }} /> */}
-
+                <Grid container spacing={3}>
+                  <Grid item sm={6} md={6} lg={6}>
                     <Typography color="textPrimary" variant="h6">
                       <span
                         style={{
@@ -196,7 +190,7 @@ const FaultLevel = ({ className, ...rest }) => {
                       {title}
                     </Typography>
                   </Grid>
-                  <Grid item lg={4} sm={4} md={4}>
+                  <Grid item sm={6} md={6} lg={6}>
                     <Typography style={{ color: textColor }} variant="h6">
                       {value}
                     </Typography>

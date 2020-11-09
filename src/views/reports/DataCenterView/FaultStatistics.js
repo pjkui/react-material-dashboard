@@ -12,7 +12,7 @@ import {
 import FaultLevel from './FaultLevel';
 import FaultDevice from './FaultDevice';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     height: '100%',
     backgroundColor: theme.palette.background.dark,
@@ -40,10 +40,10 @@ const FaultStatistics = ({ className, ...rest }) => {
       <CardHeader title="告警状态" />
       <CardContent>
         <Grid container spacing={3}>
-          <Grid item lg={6} sm={12} md={6}>
+          <Grid item sm={12} md={6} lg={6}>
             <FaultLevel />
           </Grid>
-          <Grid item lg={6} sm={12} md={6}>
+          <Grid item sm={12} md={6} lg={6}>
             <FaultDevice />
           </Grid>
         </Grid>
