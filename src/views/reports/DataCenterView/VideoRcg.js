@@ -1,150 +1,628 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { Bar } from 'react-chartjs-2';
 import {
-  Box,
-  Button,
   Card,
   CardContent,
-  CardHeader,
-  Divider,
-  useTheme,
+  Grid,
+  colors,
   makeStyles,
-  colors
+  CardHeader,
+  ButtonGroup,
+  Button
 } from '@material-ui/core';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import PeopleStream from './PeopleStream';
+import EchartRender from './EchartRender';
 
-const useStyles = makeStyles(() => ({
-  root: {}
+const useStyles = makeStyles((theme) => ({
+  root: {
+    height: '100%',
+    backgroundColor: theme.palette.background.dark,
+    color: theme.palette.primary
+  },
+  differenceIcon: {
+    color: colors.red[900]
+  },
+  differenceValue: {
+    color: colors.red[900],
+    marginRight: theme.spacing(1)
+  }
 }));
 
-const VideoRcg = ({ className, ...rest }) => {
+const FaultStatistics = ({ className, ...rest }) => {
   const classes = useStyles();
-  const theme = useTheme();
 
-  const data = {
-    datasets: [
-      {
-        backgroundColor: colors.indigo[500],
-        data: [18, 5, 19, 27, 29, 19, 20],
-        label: 'This year'
-      },
-      {
-        backgroundColor: colors.grey[200],
-        data: [11, 20, 12, 29, 30, 25, 13],
-        label: 'Last year'
-      }
-    ],
-    labels: ['1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug']
-  };
-
-  const options = {
-    animation: false,
-    cornerRadius: 20,
-    layout: { padding: 0 },
-    legend: { display: false },
-    maintainAspectRatio: false,
-    responsive: true,
-    scales: {
-      xAxes: [
-        {
-          barThickness: 12,
-          maxBarThickness: 10,
-          barPercentage: 0.5,
-          categoryPercentage: 0.5,
-          ticks: {
-            fontColor: theme.palette.text.secondary
-          },
-          gridLines: {
-            display: false,
-            drawBorder: false
-          }
+  const optionsPeopleRaw = {
+    grid: {
+      left: 0,
+      right: 10,
+      top: 10,
+      bottom: 0,
+      containLabel: true
+    },
+    xAxis: {
+      type: 'category',
+      axisLine: {
+        lineStyle: {
+          color: colors.common.white
         }
-      ],
-      yAxes: [
+      },
+      textStyle: {
+        color: colors.common.white
+      },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          color: colors.common.white
+        }
+      },
+      data: [
         {
-          ticks: {
-            fontColor: theme.palette.text.secondary,
-            beginAtZero: true,
-            min: 0
-          },
-          gridLines: {
-            borderDash: [2],
-            borderDashOffset: [2],
-            color: theme.palette.divider,
-            drawBorder: false,
-            zeroLineBorderDash: [2],
-            zeroLineBorderDashOffset: [2],
-            zeroLineColor: theme.palette.divider
+          value: '00:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '02:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '04:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '06:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '08:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '10:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '12:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '14:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '16:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '18:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '20:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '22:00',
+          textStyle: {
+            color: colors.common.white
           }
         }
       ]
     },
-    tooltips: {
-      backgroundColor: theme.palette.background.default,
-      bodyFontColor: theme.palette.text.secondary,
-      borderColor: theme.palette.divider,
-      borderWidth: 1,
-      enabled: true,
-      footerFontColor: theme.palette.text.secondary,
-      intersect: false,
-      mode: 'index',
-      titleFontColor: theme.palette.text.primary
-    }
-  };
+    yAxis: {
+      type: 'value',
+      axisLine: {
+        lineStyle: {
+          color: colors.common.white
+        }
+      },
+      axisLabel: {
+        color: colors.common.white
+      },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          color: colors.common.white
+        }
+      }
+    },
+    tooltip: {
+      show: true,
+      trigger: 'item',
+      position: 'top',
+      formatter: '{c0} <b>{b0}</b>',
+      backgroundColor: '#ff0',
+      borderColor: '#333',
+      borderWidth: 2,
+      textStyle: {
+        color: '#f0f'
+      }
+    },
+    series: [
+      {
+        data: [
+          0,
+          10.2,
+          20.1,
+          13.4,
+          10.9,
+          30.3,
+          6.2,
+          9.0,
+          11.2,
+          36.8,
+          11.7,
+          5.6
+        ],
+        type: 'line',
+        lineStyle: {
+          width: 6,
+          shadowColor: '#000',
+          shadowOffsetX: 1,
+          shadowOffsetY: 2,
+          shadowBlur: 4,
+          color: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
+            colorStops: [
+              {
+                offset: 0,
+                color: 'red' // 0% 处的颜色
+              },
+              {
+                offset: 1,
+                color: 'blue' // 100% 处的颜色
+              }
+            ],
 
+            global: false // 缺省为 false
+          }
+        },
+
+        smooth: true
+      }
+    ]
+  };
+  const [optionsPeople, setOptionPeople] = useState(optionsPeopleRaw);
+
+  const optionsMotorRaw = {
+    grid: {
+      left: 0,
+      right: 10,
+      top: 10,
+      bottom: 0,
+      containLabel: true
+    },
+    xAxis: {
+      type: 'category',
+      axisLine: {
+        lineStyle: {
+          color: colors.common.white
+        }
+      },
+      textStyle: {
+        color: colors.common.white
+      },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          color: colors.common.white
+        }
+      },
+      data: [
+        {
+          value: '00:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '02:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '04:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '06:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '08:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '10:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '12:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '14:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '16:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '18:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '20:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '22:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        }
+      ]
+    },
+    yAxis: {
+      type: 'value',
+      axisLine: {
+        lineStyle: {
+          color: colors.common.white
+        }
+      },
+      axisLabel: {
+        color: colors.common.white
+      },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          color: colors.common.white
+        }
+      }
+    },
+    tooltip: {
+      show: true,
+      trigger: 'item',
+      position: 'top',
+      formatter: '{c0} <b>{b0}</b>',
+      backgroundColor: '#ff0',
+      borderColor: '#333',
+      borderWidth: 2,
+      textStyle: {
+        color: '#f0f'
+      }
+    },
+    series: [
+      {
+        data: [
+          0,
+          10.2,
+          20.1,
+          13.4,
+          10.9,
+          30.3,
+          6.2,
+          9.0,
+          11.2,
+          36.8,
+          11.7,
+          5.6
+        ],
+        type: 'line',
+        lineStyle: {
+          width: 6,
+          shadowColor: '#000',
+          shadowOffsetX: 1,
+          shadowOffsetY: 2,
+          shadowBlur: 4,
+          color: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
+            colorStops: [
+              {
+                offset: 0,
+                color: 'red' // 0% 处的颜色
+              },
+              {
+                offset: 1,
+                color: 'blue' // 100% 处的颜色
+              }
+            ],
+
+            global: false // 缺省为 false
+          }
+        },
+
+        smooth: true
+      }
+    ]
+  };
+  const [optionsMotor, setOptionMotor] = useState(optionsMotorRaw);
+  const optionsNonMotorRaw = {
+    grid: {
+      left: 0,
+      right: 10,
+      top: 10,
+      bottom: 0,
+      containLabel: true
+    },
+    xAxis: {
+      type: 'category',
+      axisLine: {
+        lineStyle: {
+          color: colors.common.white
+        }
+      },
+      textStyle: {
+        color: colors.common.white
+      },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          color: colors.common.white
+        }
+      },
+      data: [
+        {
+          value: '00:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '02:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '04:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '06:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '08:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '10:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '12:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '14:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '16:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '18:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '20:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        },
+        {
+          value: '22:00',
+          textStyle: {
+            color: colors.common.white
+          }
+        }
+      ]
+    },
+    yAxis: {
+      type: 'value',
+      axisLine: {
+        lineStyle: {
+          color: colors.common.white
+        }
+      },
+      axisLabel: {
+        color: colors.common.white
+      },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          color: colors.common.white
+        }
+      }
+    },
+    tooltip: {
+      show: true,
+      trigger: 'item',
+      position: 'top',
+      formatter: '{c0} <b>{b0}</b>',
+      backgroundColor: '#ff0',
+      borderColor: '#333',
+      borderWidth: 2,
+      textStyle: {
+        color: '#f0f'
+      }
+    },
+    series: [
+      {
+        data: [
+          0,
+          10.2,
+          20.1,
+          13.4,
+          10.9,
+          30.3,
+          6.2,
+          9.0,
+          11.2,
+          36.8,
+          11.7,
+          5.6
+        ],
+        type: 'line',
+        lineStyle: {
+          width: 6,
+          shadowColor: '#000',
+          shadowOffsetX: 1,
+          shadowOffsetY: 2,
+          shadowBlur: 4,
+          color: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
+            colorStops: [
+              {
+                offset: 0,
+                color: 'red' // 0% 处的颜色
+              },
+              {
+                offset: 1,
+                color: 'blue' // 100% 处的颜色
+              }
+            ],
+
+            global: false // 缺省为 false
+          }
+        },
+
+        smooth: true
+      }
+    ]
+  };
+  const [optionsNonMotor, setOptionNonMotor] = useState(optionsNonMotorRaw);
+  const SwitchVideoSource = (evt) => {
+    console.log(evt);
+    const optionsPeople1 = { ...optionsPeopleRaw };
+    ///TODO:修改新的人流数据
+    // optionsPeople1.xAxis.data = xData;
+    let datas = optionsPeople1.series[0].data;
+    for (let index = 0; index < datas.length; index++) {
+      datas[index] = Math.random() * 60;
+    }
+
+    setOptionPeople(optionsPeople1);
+    const optionsMotor1 = { ...optionsMotorRaw };
+    ///TODO:修改新的车流数据
+    datas = optionsMotor1.series[0].data;
+    for (let index = 0; index < datas.length; index++) {
+      datas[index] = Math.random() * 60;
+    }
+
+    setOptionMotor(optionsMotor1);
+    const optionsNonMotor1 = { ...optionsNonMotorRaw };
+    ///TODO:修改新的非车流数据
+    datas = optionsNonMotor1.series[0].data;
+    for (let index = 0; index < datas.length; index++) {
+      datas[index] = Math.random() * 60;
+    }
+    setOptionNonMotor(optionsNonMotor1);
+  };
   return (
-    <Card
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
+    <Card className={clsx(classes.root, className)} {...rest}>
       <CardHeader
-        action={(
-          <Button
-            endIcon={<ArrowDropDownIcon />}
-            size="small"
-            variant="text"
+        action={
+          <ButtonGroup
+            color="secondary"
+            aria-label="outlined secondary button group"
           >
-            Last 7 days
-          </Button>
-        )}
-        title="Latest Sales"
+            <Button onClick={SwitchVideoSource}>视频切换源</Button>
+          </ButtonGroup>
+        }
+        title="视频识别(24小时)"
       />
-      <Divider />
       <CardContent>
-        <Box
-          height={400}
-          position="relative"
-        >
-          <Bar
-            data={data}
-            options={options}
-          />
-        </Box>
+        <Grid container spacing={3}>
+          <Grid item sm={12} md={4} lg={4}>
+            <EchartRender options={optionsPeople} />
+          </Grid>
+          <Grid item sm={12} md={4} lg={4}>
+            <EchartRender options={optionsMotor} />
+          </Grid>
+          <Grid item sm={12} md={4} lg={4}>
+            <EchartRender options={optionsNonMotor} />
+          </Grid>
+        </Grid>
       </CardContent>
-      <Divider />
-      <Box
-        display="flex"
-        justifyContent="flex-end"
-        p={2}
-      >
-        <Button
-          color="primary"
-          endIcon={<ArrowRightIcon />}
-          size="small"
-          variant="text"
-        >
-          Overview
-        </Button>
-      </Box>
     </Card>
   );
 };
 
-VideoRcg.propTypes = {
+FaultStatistics.propTypes = {
   className: PropTypes.string
 };
 
-export default VideoRcg;
+export default FaultStatistics;
