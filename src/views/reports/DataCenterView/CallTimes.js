@@ -1,28 +1,21 @@
 import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import {
-  Avatar,
-  Box,
-  Card,
-  CardContent,
-  Grid,
-  Typography,
-  colors,
-  makeStyles
-} from '@material-ui/core';
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import MoneyIcon from '@material-ui/icons/Money';
+import { Card, CardContent, Grid, colors, makeStyles } from '@material-ui/core';
+import CallTimesDay from './CallTimesDay';
+import CallTimesMonth from './CallTimesMonth';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100%'
+    height: '100%',
+    backgroundColor: theme.palette.background.dark,
+    color: theme.palette.primary
   },
-  avatar: {
-    backgroundColor: colors.red[600],
-    height: 56,
-    width: 56
-  },
+  // avatar: {
+  //   backgroundColor: colors.red[600],
+  //   height: 56,
+  //   width: 56
+  // },
   differenceIcon: {
     color: colors.red[900]
   },
@@ -32,67 +25,27 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const CallTimes = ({ className, ...rest }) => {
+const FaultStatistics = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
-    <Card
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
+    <Card className={clsx(classes.root, className)} {...rest}>
       <CardContent>
-        <Grid
-          container
-          justify="space-between"
-          spacing={3}
-        >
-          <Grid item>
-            <Typography
-              color="textSecondary"
-              gutterBottom
-              variant="h6"
-            >
-              BUDGET
-            </Typography>
-            <Typography
-              color="textPrimary"
-              variant="h3"
-            >
-              $24,000
-            </Typography>
+        <Grid container spacing={3}>
+          <Grid item sm={12} md={12} lg={12}>
+            <CallTimesDay />
           </Grid>
-          <Grid item>
-            <Avatar className={classes.avatar}>
-              <MoneyIcon />
-            </Avatar>
+          <Grid item sm={12} md={12} lg={12}>
+            <CallTimesMonth />
           </Grid>
         </Grid>
-        <Box
-          mt={2}
-          display="flex"
-          alignItems="center"
-        >
-          <ArrowDownwardIcon className={classes.differenceIcon} />
-          <Typography
-            className={classes.differenceValue}
-            variant="body2"
-          >
-            12%
-          </Typography>
-          <Typography
-            color="textSecondary"
-            variant="caption"
-          >
-            Since last month
-          </Typography>
-        </Box>
       </CardContent>
     </Card>
   );
 };
 
-CallTimes.propTypes = {
+FaultStatistics.propTypes = {
   className: PropTypes.string
 };
 
-export default CallTimes;
+export default FaultStatistics;

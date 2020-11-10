@@ -8,7 +8,7 @@ import VideoRcg from './VideoRcg';
 import PowerTrend from './PowerTrend';
 import FaultStatistics from './FaultStatistics';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
     minHeight: '100%',
@@ -33,7 +33,7 @@ const DataCenter = () => {
           <Grid item lg={8} md={12} xl={9} xs={12}>
             <VideoRcg />
           </Grid>
-          <Grid item lg={4} md={6} xl={3} xs={12}>
+          <Grid item lg={4} md={6} xl={3} xs={12} sm={12}>
             <CallTimes />
           </Grid>
           <Grid item lg={4} md={6} xl={3} xs={12}>
