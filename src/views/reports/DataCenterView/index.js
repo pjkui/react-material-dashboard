@@ -36,10 +36,10 @@ const DataCenter = () => {
           <Grid item lg={4} md={6} xl={3} xs={12} sm={12}>
             <CallTimes />
           </Grid>
-          <Grid item lg={4} md={6} xl={3} xs={12}>
+          <Grid item lg={5} md={6} xl={5} xs={12}>
             <EnvTrend />
           </Grid>
-          <Grid item lg={8} md={12} xl={9} xs={12}>
+          <Grid item lg={7} md={12} xl={7} xs={12}>
             <ApStatistics />
           </Grid>
         </Grid>

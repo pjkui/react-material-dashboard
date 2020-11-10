@@ -214,12 +214,7 @@ const PowerTrend = ({ className, ...rest }) => {
           color: colors.common.white
         }
       },
-      {
-        value: '00:00',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
+
       {
         value: '02:00',
         textStyle: {
