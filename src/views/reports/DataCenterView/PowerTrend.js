@@ -7,7 +7,7 @@ import {
   Card,
   CardContent,
   CardHeader,
-  useTheme,
+  // useTheme,
   makeStyles,
   colors,
   ButtonGroup
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 const PowerTrend = ({ className, ...rest }) => {
   const classes = useStyles();
 
-  const theme = useTheme();
+  // const theme = useTheme();
   const optionsRaw = {
     grid: {
       left: 0,

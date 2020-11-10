@@ -11,7 +11,6 @@ import {
   ButtonGroup,
   Button
 } from '@material-ui/core';
-import PeopleStream from './PeopleStream';
 import EchartRender from './EchartRender';
 
 const useStyles = makeStyles((theme) => ({
