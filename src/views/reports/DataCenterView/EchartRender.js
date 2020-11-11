@@ -5,15 +5,18 @@ import echarts from 'echarts';
 export default class EchartRender extends React.Component {
   constructor(props) {
     super(props);
+    //准备Echarts的DOM容器,创建refs
     this.myRef = React.createRef();
   }
-
+  /**
+   * 初始化Echarts实例.
+   * 一般用document.getElementById("id");
+   * 此处用current来访问DOM节点
+   */
   componentDidMount() {
     this.myChart = echarts.init(this.myRef.current);
     this.renderData();
   }
-
-  // eslint-disable-next-line camelcase
 
   shouldComponentUpdate() {
     this.renderData();
