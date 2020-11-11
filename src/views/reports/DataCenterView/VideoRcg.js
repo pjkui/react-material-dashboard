@@ -8,7 +8,13 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: '100%',
     backgroundColor: theme.palette.background.cardColor,
-    color: theme.palette.primary
+    color: theme.palette.primary,
+    CardContent: {
+      height: '100%'
+    }
+  },
+  CardContent: {
+    height: '200px'
   },
   differenceIcon: {
     color: colors.red[900]
@@ -584,9 +590,15 @@ const VideoRcg = ({ className, ...rest }) => {
   SwitchVideoSourceOutter = SwitchVideoSource;
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
-      <CardContent>
+      <CardContent className={clsx(classes.CardContent, className)}>
         <Grid container spacing={3}>
-          <Grid item sm={12} md={4} lg={4}>
+          <Grid
+            item
+            sm={12}
+            md={4}
+            lg={4}
+            className={clsx(classes.CardContent)}
+          >
             <EchartRender options={optionsPeople} />
           </Grid>
           <Grid item sm={12} md={4} lg={4}>
