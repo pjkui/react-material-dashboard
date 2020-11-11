@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import {
-  Card,
-  CardContent,
-  Grid,
-  colors,
-  makeStyles,
-  CardHeader
-} from '@material-ui/core';
+import { Card, CardContent, Grid, colors, makeStyles } from '@material-ui/core';
 import EchartRender from './EchartRender';
 
 const useStyles = makeStyles((theme) => ({
@@ -25,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1)
   }
 }));
-
+let SwitchVideoSourceOutter = null;
 const VideoRcg = ({ className, ...rest }) => {
   const classes = useStyles();
 
@@ -588,9 +581,9 @@ const VideoRcg = ({ className, ...rest }) => {
     }
     setOptionNonMotor(optionsNonMotor1);
   };
+  SwitchVideoSourceOutter = SwitchVideoSource;
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
-      <CardHeader onClick={SwitchVideoSource} />
       <CardContent>
         <Grid container spacing={3}>
           <Grid item sm={12} md={4} lg={4}>
@@ -609,7 +602,12 @@ const VideoRcg = ({ className, ...rest }) => {
 };
 
 VideoRcg.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  sourcetype: PropTypes.number
 };
-
-export default VideoRcg;
+function needRerender(preProps, nextProps) {
+  console.log(preProps, nextProps);
+  SwitchVideoSourceOutter(null);
+  return true;
+}
+export default React.memo(VideoRcg, needRerender);

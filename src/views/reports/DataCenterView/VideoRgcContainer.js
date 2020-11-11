@@ -80,7 +80,10 @@ const VideoRgcContainer = ({ className, ...rest }) => {
   const [videoSource, setVideoSource] = useState(10);
   const handleChange = (event) => {
     console.log(event);
-    setVideoSource(event.target.value);
+    if (event == null || event.target == null) {
+      return;
+    }
+    setVideoSource(parseInt(event.target.value, 10));
   };
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
@@ -93,16 +96,16 @@ const VideoRgcContainer = ({ className, ...rest }) => {
             onChange={handleChange}
             input={<BootstrapInput />}
           >
-            <option value={10}>视频源切换</option>
-            <option value={20}>视频源切换</option>
-            <option value={30}>视频源切换</option>
+            <option value={10}>视频源切换1</option>
+            <option value={20}>视频源切换2</option>
+            <option value={30}>视频源切换3</option>
           </NativeSelect>
         }
       />
       <CardContent>
         <Grid container spacing={3}>
           <Grid item sm={12} md={12} lg={12}>
-            <VideoRcg />
+            <VideoRcg sourcetype={videoSource} />
           </Grid>
         </Grid>
       </CardContent>
