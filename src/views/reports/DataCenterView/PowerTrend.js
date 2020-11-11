@@ -195,7 +195,7 @@ const PowerTrend = ({ className, ...rest }) => {
             global: false // 缺省为 false
           }
         },
-
+        symbolSize: 0,
         smooth: true
       }
     ]
