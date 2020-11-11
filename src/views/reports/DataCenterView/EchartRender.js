@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import echarts from 'echarts'
+import echarts from 'echarts';
 
 class EchartRender extends React.Component {
   constructor(props) {
     super(props);
-    //准备Echarts的DOM容器,创建refs
+    // 准备Echarts的DOM容器,创建refs
     this.myRef = React.createRef();
   }
+
   /**
    * 初始化Echarts实例.
    * 一般用document.getElementById("id");
@@ -22,7 +23,6 @@ class EchartRender extends React.Component {
     this.renderData();
     return true;
   }
-
 
   renderData() {
     // 指定图标的配置项和数据
@@ -50,21 +50,22 @@ class EchartRender extends React.Component {
     // 使用指定好的配置项和数据显示图表
     const { options } = this.props;
     this.myEchart.setOption(options);
-
   }
-
 
   render() {
     let { width, height } = this.props;
     width = width || 100;
     height = height || 100;
     return (
-      <div style={{ width: `${width}%`, height: `${height}%` }} ref={this.myRef}></div>
+      <div
+        style={{ width: `${width}%`, height: `${height}%` }}
+        ref={this.myRef}
+      />
     );
   }
-};
+}
 EchartRender.propTypes = {
-  className: PropTypes.string,
+  // className: PropTypes.string,
   options: PropTypes.object,
   height: PropTypes.number,
   width: PropTypes.number

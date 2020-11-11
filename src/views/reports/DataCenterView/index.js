@@ -4,7 +4,7 @@ import Page from 'src/components/Page';
 import ApStatistics from './ApStatistics';
 import EnvTrend from './EnvTrend';
 import CallTimes from './CallTimes';
-import VideoRcg from './VideoRcg';
+import VideoRgcContainer from './VideoRgcContainer';
 import PowerTrend from './PowerTrend';
 import FaultStatistics from './FaultStatistics';
 
@@ -31,7 +31,7 @@ const DataCenter = () => {
             <PowerTrend />
           </Grid>
           <Grid item lg={8} md={12} xl={9} xs={12}>
-            <VideoRcg />
+            <VideoRgcContainer />
           </Grid>
           <Grid item lg={4} md={6} xl={3} xs={12} sm={12}>
             <CallTimes />

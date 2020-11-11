@@ -3,15 +3,15 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   Box,
-  Button,
   Card,
   CardContent,
   CardHeader,
-  // useTheme,
   makeStyles,
   colors,
-  ButtonGroup
+  NativeSelect,
+  InputBase
 } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import EchartRender from './EchartRender';
 
 const useStyles = makeStyles((theme) => ({
@@ -22,6 +22,47 @@ const useStyles = makeStyles((theme) => ({
 
 const EnvTrend = ({ className, ...rest }) => {
   const classes = useStyles();
+
+  const BootstrapInput = withStyles((theme) => ({
+    root: {
+      marginTop: '0 !important',
+      'label + &': {
+        marginTop: theme.spacing(3)
+      }
+    },
+    // select: {
+    //   marginTop: '0 !important',
+    // },
+    input: {
+      color: theme.palette.background.paper,
+      borderRadius: 4,
+      position: 'relative',
+      backgroundColor: theme.palette.background.dark,
+      border: '1px solid #ced4da',
+      fontSize: 16,
+      padding: '10px 26px 10px 12px',
+      marginTop: '0',
+      transition: theme.transitions.create(['border-color', 'box-shadow']),
+      // Use the system font instead of the default Roboto font.
+      fontFamily: [
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"'
+      ].join(','),
+      '&:focus': {
+        borderRadius: 4,
+        borderColor: '#80bdff',
+        boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)'
+      }
+    }
+  }))(InputBase);
 
   // const theme = useTheme();
   const xAxisData = [
@@ -358,20 +399,32 @@ const EnvTrend = ({ className, ...rest }) => {
     setOptions(odata);
   }
 
+  const [videoSource, setVideoSource] = useState(10);
+  const handleChange = (event) => {
+    console.log(event);
+    setVideoSource(event.target.value);
+  };
+
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
       <CardHeader
         action={
-          <ButtonGroup
-            color="secondary"
-            aria-label="outlined secondary button group"
+          <NativeSelect
+            id="demo-customized-select-native"
+            value={videoSource}
+            onChange={handleChange}
+            input={<BootstrapInput />}
           >
-            <Button onClick={showDayData} data={12}>
-              日
-            </Button>
-            <Button onClick={showMonthData}>月</Button>
-            <Button onClick={showYearData}>年</Button>
-          </ButtonGroup>
+            <option value={10} onSelect={showDayData}>
+              视频源切换
+            </option>
+            <option value={20} onSelect={showMonthData}>
+              视频源切换
+            </option>
+            <option value={30} onSelect={showYearData}>
+              视频源切换
+            </option>
+          </NativeSelect>
         }
         title="环境变化趋势(24小时)"
       />

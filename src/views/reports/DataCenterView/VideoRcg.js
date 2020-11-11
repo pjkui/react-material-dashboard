@@ -7,9 +7,7 @@ import {
   Grid,
   colors,
   makeStyles,
-  CardHeader,
-  ButtonGroup,
-  Button
+  CardHeader
 } from '@material-ui/core';
 import EchartRender from './EchartRender';
 
@@ -50,7 +48,7 @@ const VideoRcg = ({ className, ...rest }) => {
         color: colors.common.white
       },
       splitLine: {
-        show: true,
+        show: false,
         lineStyle: {
           color: colors.common.white
         }
@@ -228,7 +226,7 @@ const VideoRcg = ({ className, ...rest }) => {
         color: colors.common.white
       },
       splitLine: {
-        show: true,
+        show: false,
         lineStyle: {
           color: colors.common.white
         }
@@ -405,7 +403,7 @@ const VideoRcg = ({ className, ...rest }) => {
         color: colors.common.white
       },
       splitLine: {
-        show: true,
+        show: false,
         lineStyle: {
           color: colors.common.white
         }
@@ -566,7 +564,7 @@ const VideoRcg = ({ className, ...rest }) => {
   const SwitchVideoSource = (evt) => {
     console.log(evt);
     const optionsPeople1 = { ...optionsPeopleRaw };
-    ///TODO:修改新的人流数据
+    /// TODO:修改新的人流数据
     // optionsPeople1.xAxis.data = xData;
     let datas = optionsPeople1.series[0].data;
     for (let index = 0; index < datas.length; index++) {
@@ -575,7 +573,7 @@ const VideoRcg = ({ className, ...rest }) => {
 
     setOptionPeople(optionsPeople1);
     const optionsMotor1 = { ...optionsMotorRaw };
-    ///TODO:修改新的车流数据
+    /// TODO:修改新的车流数据
     datas = optionsMotor1.series[0].data;
     for (let index = 0; index < datas.length; index++) {
       datas[index] = Math.random() * 60;
@@ -583,7 +581,7 @@ const VideoRcg = ({ className, ...rest }) => {
 
     setOptionMotor(optionsMotor1);
     const optionsNonMotor1 = { ...optionsNonMotorRaw };
-    ///TODO:修改新的非车流数据
+    /// TODO:修改新的非车流数据
     datas = optionsNonMotor1.series[0].data;
     for (let index = 0; index < datas.length; index++) {
       datas[index] = Math.random() * 60;
@@ -592,17 +590,7 @@ const VideoRcg = ({ className, ...rest }) => {
   };
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
-      <CardHeader
-        action={
-          <ButtonGroup
-            color="secondary"
-            aria-label="outlined secondary button group"
-          >
-            <Button onClick={SwitchVideoSource}>视频切换源</Button>
-          </ButtonGroup>
-        }
-        title="视频识别(24小时)"
-      />
+      <CardHeader onClick={SwitchVideoSource} />
       <CardContent>
         <Grid container spacing={3}>
           <Grid item sm={12} md={4} lg={4}>
