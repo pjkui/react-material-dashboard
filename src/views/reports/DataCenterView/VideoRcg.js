@@ -16,7 +16,7 @@ import EchartRender from './EchartRender';
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100%',
-    backgroundColor: theme.palette.background.dark,
+    backgroundColor: theme.palette.background.cardColor,
     color: theme.palette.primary
   },
   differenceIcon: {

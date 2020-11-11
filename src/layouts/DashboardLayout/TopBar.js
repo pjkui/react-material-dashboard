@@ -68,7 +68,7 @@ const BootstrapInput = withStyles((theme) => ({
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: theme.props.colors.TopBarColor,
+    backgroundColor: theme.palette.background.TopBarColor,
     oldColor: colors.blue[100]
   },
   avatar: {

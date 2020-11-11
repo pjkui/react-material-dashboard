@@ -17,7 +17,7 @@ import EchartRender from './EchartRender';
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100%',
-    backgroundColor: theme.palette.background.dark2
+    backgroundColor: theme.palette.background.cardColor
   }
 }));
 

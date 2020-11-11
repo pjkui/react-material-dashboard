@@ -5,8 +5,9 @@ import typography from './typography';
 const theme = createMuiTheme({
   palette: {
     background: {
-      dark: '#1a2380',
-      dark2: '#252ea3',
+      cardSection: '#1a2380',
+      cardColor: '#252ea3',
+      TopBarColor: '#161b74',
       default: colors.common.white,
       paper: colors.common.white
     },
@@ -17,14 +18,9 @@ const theme = createMuiTheme({
       main: colors.indigo[500]
     },
     text: {
-      primary: colors.grey[600],
+      primary: colors.blueGrey[900],
       secondary: colors.blueGrey[600],
       chartTitle: colors.blue['A400']
-    }
-  },
-  props: {
-    colors: {
-      TopBarColor: '#161b74'
     }
   },
   shadows,
