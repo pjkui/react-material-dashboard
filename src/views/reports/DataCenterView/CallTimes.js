@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const FaultStatistics = ({ className, ...rest }) => {
+const CallTimes = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -44,8 +44,8 @@ const FaultStatistics = ({ className, ...rest }) => {
   );
 };
 
-FaultStatistics.propTypes = {
+CallTimes.propTypes = {
   className: PropTypes.string
 };
 
-export default FaultStatistics;
+export default CallTimes;

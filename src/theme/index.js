@@ -18,7 +18,7 @@ const theme = createMuiTheme({
       main: colors.indigo[500]
     },
     text: {
-      primary: colors.blueGrey[900],
+      primary: colors.blue['A100'],
       secondary: colors.blueGrey[600],
       chartTitle: colors.blue['A400']
     }

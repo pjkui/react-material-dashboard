@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const FaultStatistics = ({ className, ...rest }) => {
+const VideoRcg = ({ className, ...rest }) => {
   const classes = useStyles();
 
   const optionsPeopleRaw = {
@@ -620,8 +620,8 @@ const FaultStatistics = ({ className, ...rest }) => {
   );
 };
 
-FaultStatistics.propTypes = {
+VideoRcg.propTypes = {
   className: PropTypes.string
 };
 
-export default FaultStatistics;
+export default VideoRcg;
