@@ -2,7 +2,6 @@ import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
-  Avatar,
   Card,
   CardContent,
   Grid,
@@ -10,30 +9,28 @@ import {
   colors,
   makeStyles
 } from '@material-ui/core';
-// import { color } from 'echarts/lib/export';
-import CalendarToday from '@material-ui/icons/CalendarToday';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100%',
-    backgroundColor: colors.purple['700'],
+    backgroundColor: theme.palette.background.cardColor,
     color: colors.common.white
   },
-  avatar: {
-    backgroundColor: colors.purple['A100'],
-    height: 80,
-    width: 80
-  },
+  // avatar: {
+  //   backgroundColor: colors.orange['A200'],
+  //   height: 80,
+  //   width: 80
+  // },
   differenceIcon: {
-    color: colors.red[900]
+    color: colors.common.white
   },
   differenceValue: {
-    color: colors.red[900],
+    color: colors.common.white,
     marginRight: theme.spacing(1)
   }
 }));
 
-const CallTimesMonth = ({ className, ...rest }) => {
+const ApDayAccess = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -47,20 +44,15 @@ const CallTimesMonth = ({ className, ...rest }) => {
               variant="h5"
               style={{ paddingTop: 10 }}
             >
-              30天紧急呼叫(次)
+              24小时接入人数
             </Typography>
             <Typography
               color="textPrimary"
               variant="h1"
               style={{ paddingTop: 10 }}
             >
-              123456
+              1234567
             </Typography>
-          </Grid>
-          <Grid item>
-            <Avatar className={classes.avatar}>
-              <CalendarToday />
-            </Avatar>
           </Grid>
         </Grid>
       </CardContent>
@@ -68,8 +60,8 @@ const CallTimesMonth = ({ className, ...rest }) => {
   );
 };
 
-CallTimesMonth.propTypes = {
+ApDayAccess.propTypes = {
   className: PropTypes.string
 };
 
-export default CallTimesMonth;
+export default ApDayAccess;

@@ -1,7 +1,14 @@
 import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { Card, CardContent, Grid, colors, makeStyles } from '@material-ui/core';
+import {
+  Card,
+  CardContent,
+  Grid,
+  colors,
+  makeStyles,
+  Box
+} from '@material-ui/core';
 import CallTimesDay from './CallTimesDay';
 import CallTimesMonth from './CallTimesMonth';
 
@@ -9,13 +16,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: '100%',
     backgroundColor: theme.palette.background.cardSection,
-    color: theme.palette.primary
+    color: colors.common.white
   },
-  // avatar: {
-  //   backgroundColor: colors.red[600],
-  //   height: 56,
-  //   width: 56
-  // },
   differenceIcon: {
     color: colors.red[900]
   },
@@ -24,26 +26,29 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1)
   }
 }));
-
 const CallTimes = ({ className, ...rest }) => {
   const classes = useStyles();
-
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
       <CardContent>
-        <Grid container spacing={3}>
-          <Grid item sm={12} md={12} lg={12}>
-            <CallTimesDay />
+        <Box height={300} position="relative">
+          <Grid container spacing={3}>
+            <Grid item sm={12} md={12} lg={12}>
+              <Box height={180} position="relative" marginBottom={2}>
+                <CallTimesDay />
+              </Box>
+            </Grid>
+            <Grid item sm={12} md={12} lg={12}>
+              <Box height={180} position="relative">
+                <CallTimesMonth />
+              </Box>
+            </Grid>
           </Grid>
-          <Grid item sm={12} md={12} lg={12}>
-            <CallTimesMonth />
-          </Grid>
-        </Grid>
+        </Box>
       </CardContent>
     </Card>
   );
 };
-
 CallTimes.propTypes = {
   className: PropTypes.string
 };

@@ -16,7 +16,8 @@ import EchartRender from './EchartRender';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.background.cardSection
+    backgroundColor: theme.palette.background.cardSection,
+    color: colors.common.white
   }
 }));
 
@@ -36,89 +37,89 @@ const PowerTrend = ({ className, ...rest }) => {
       type: 'category',
       axisLine: {
         lineStyle: {
-          color: colors.common.white
+          color: colors.blue['A100']
         }
       },
       textStyle: {
-        color: colors.common.white
+        color: colors.blue['A100']
       },
       splitLine: {
         show: true,
         lineStyle: {
-          color: colors.common.white
+          color: colors.blue['A100']
         }
       },
       data: [
         {
           value: '00:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '02:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '04:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '06:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '08:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '10:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '12:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '14:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '16:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '18:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '20:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '22:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         }
       ]
@@ -127,16 +128,16 @@ const PowerTrend = ({ className, ...rest }) => {
       type: 'value',
       axisLine: {
         lineStyle: {
-          color: colors.common.white
+          color: colors.blue['A100']
         }
       },
       axisLabel: {
-        color: colors.common.white
+        color: colors.blue['A100']
       },
       splitLine: {
         show: true,
         lineStyle: {
-          color: colors.common.white
+          color: colors.blue['A100']
         }
       }
     },
@@ -170,7 +171,7 @@ const PowerTrend = ({ className, ...rest }) => {
         ],
         type: 'line',
         lineStyle: {
-          width: 6,
+          width: 8,
           shadowColor: '#000',
           shadowOffsetX: 1,
           shadowOffsetY: 2,
@@ -184,14 +185,17 @@ const PowerTrend = ({ className, ...rest }) => {
             colorStops: [
               {
                 offset: 0,
-                color: 'red' // 0% 处的颜色
+                color: colors.purple['500'] // 0% 处的颜色
+              },
+              {
+                offset: 0.5,
+                color: colors.blue['200'] // 100% 处的颜色
               },
               {
                 offset: 1,
-                color: 'blue' // 100% 处的颜色
-              }
+                color: colors.blue['A400'] // 0% 处的颜色
+              },
             ],
-
             global: false // 缺省为 false
           }
         },
@@ -203,8 +207,6 @@ const PowerTrend = ({ className, ...rest }) => {
 
   const [options, setOptions] = useState(optionsRaw);
 
-  // options = options_raw;
-  // setOptions(options_raw);
   function showDayData(e) {
     console.log(e);
     const xData = [

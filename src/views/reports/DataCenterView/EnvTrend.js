@@ -13,10 +13,12 @@ import {
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import EchartRender from './EchartRender';
+// import theme from 'src/theme';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.background.cardSection
+    backgroundColor: theme.palette.background.cardSection,
+    color: colors.common.white
   }
 }));
 
@@ -34,11 +36,12 @@ const EnvTrend = ({ className, ...rest }) => {
     //   marginTop: '0 !important',
     // },
     input: {
-      color: theme.palette.background.paper,
+      color: colors.red['A400'],
       borderRadius: 4,
       position: 'relative',
-      backgroundColor: theme.palette.background.dark,
-      border: '1px solid #ced4da',
+      backgroundColor: colors.orange['700'],
+      opacity: 0.2,
+      border: '1px solid #e65110',
       fontSize: 16,
       padding: '10px 26px 10px 12px',
       marginTop: '0',
@@ -64,7 +67,6 @@ const EnvTrend = ({ className, ...rest }) => {
     }
   }))(InputBase);
 
-  // const theme = useTheme();
   const xAxisData = [
     '00:00',
     '02:00',
@@ -79,78 +81,56 @@ const EnvTrend = ({ className, ...rest }) => {
     '20:00',
     '22:00'
   ];
-  // var data1 = [];
-  const data2 = [
-    -15,
+  const yData = [
     -10,
-    -8,
     -7,
-    -5,
     -3,
-    3,
     5,
-    4,
     7,
-    8,
     12,
-    20,
     27,
-    20,
     11,
-    10,
     8,
-    7,
     5,
-    4,
     3,
-    -1
+    -2
   ];
-  // for (let i = 0; i < 100; i++) {
-  // xAxisData.push(`类目${i}`);
-  // data1.push((Math.sin(i / 5) * (i / 5 -10) + i / 6) * 5);
-  //   data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
-  // }
 
   const optionsRaw = {
-    // title: {
-    //   text: '环境变化趋势(24小时)'
-    // },
-    // legend: {
-    //   data: ['bar']
-    // },
-    // toolbox: {
-    //   // y: 'bottom',
-    //   feature: {
-    //     magicType: {
-    //       type: ['stack', 'tiled']
-    //     },
-    //     dataView: {},
-    //     saveAsImage: {
-    //       pixelRatio: 2
-    //     }
-    //   }
-    // },
     tooltip: {},
     xAxis: {
       data: xAxisData,
+      axisLine: {
+        lineStyle: {
+          color: colors.blue['A100']
+        }
+      },
       splitLine: {
-        show: false
+        show: true,
+        lineStyle: {
+          color: colors.blue['A100']
+        }
       }
     },
-    yAxis: {},
+    yAxis: {
+      axisLine: {
+        lineStyle: {
+          color: colors.blue['A100']
+        }
+      },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          color: colors.blue['A100']
+        }
+      }
+    },
     series: [
-      //     {
-      //     name: 'bar',
-      //     type: 'bar',
-      //     data: data1,
-      //     animationDelay: function (idx) {
-      //         return idx * 10;
-      //     }
-      // },
       {
-        name: 'bar2',
+        name: 'bar',
         type: 'bar',
-        data: data2,
+        data: yData,
+        barMaxWidth: '30%',
         animationDelay(idx) {
           return idx * 10 + 100;
         }
@@ -162,248 +142,7 @@ const EnvTrend = ({ className, ...rest }) => {
     }
   };
 
-  const [options, setOptions] = useState(optionsRaw);
-
-  // options = options_raw;
-  // setOptions(options_raw);
-  function showDayData(e) {
-    console.log(e);
-    const xData = [
-      {
-        value: '00:00',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-
-      {
-        value: '02:00',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '04:00',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '06:00',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '08:00',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '10:00',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '12:00',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '14:00',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '16:00',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '18:00',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '20:00',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '22:00',
-        textStyle: {
-          color: colors.common.white
-        }
-      }
-    ];
-    const dailyData = [
-      0,
-      10.2,
-      20.1,
-      13.4,
-      10.9,
-      30.3,
-      6.2,
-      9.0,
-      11.2,
-      36.8,
-      11.7,
-      5.6
-    ];
-    const odata = { ...optionsRaw };
-    odata.xAxis.data = xData;
-    odata.series[0].data = dailyData;
-    setOptions(odata);
-    console.log(options);
-  }
-  function showMonthData(e) {
-    console.log(e);
-    const xData = [
-      {
-        value: '一月',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '二月',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '三月',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '4月',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '5月',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '6月',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '7月',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '8月',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '9月',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '10月',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '11月',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '12月',
-        textStyle: {
-          color: colors.common.white
-        }
-      }
-    ];
-    const monthData = [
-      1,
-      3.2,
-      5.1,
-      13.4,
-      10.9,
-      67.3,
-      61.2,
-      91.0,
-      111.2,
-      316.8,
-      11.7,
-      555.6
-    ];
-    const odata = { ...optionsRaw };
-    odata.xAxis.data = xData;
-    odata.series[0].data = monthData;
-    setOptions(odata);
-  }
-  function showYearData(e) {
-    console.log(e);
-    const xData = [
-      {
-        value: '2016',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '2017',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '2018',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '2019',
-        textStyle: {
-          color: colors.common.white
-        }
-      },
-      {
-        value: '2020',
-        textStyle: {
-          color: colors.common.white
-        }
-      }
-    ];
-    const yearData = [3.2, 13.4, 10.9, 61.2, 11.7];
-    const odata = { ...optionsRaw };
-    odata.xAxis.data = xData;
-    odata.series[0].data = yearData;
-    setOptions(odata);
-  }
-
-  const [videoSource, setVideoSource] = useState(10);
-  const handleChange = (event) => {
-    console.log(event);
-    setVideoSource(event.target.value);
-  };
+  const [options] = useState(optionsRaw);
 
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
@@ -411,19 +150,11 @@ const EnvTrend = ({ className, ...rest }) => {
         action={
           <NativeSelect
             id="demo-customized-select-native"
-            value={videoSource}
-            onChange={handleChange}
             input={<BootstrapInput />}
           >
-            <option value={10} onSelect={showDayData}>
-              视频源切换
-            </option>
-            <option value={20} onSelect={showMonthData}>
-              视频源切换
-            </option>
-            <option value={30} onSelect={showYearData}>
-              视频源切换
-            </option>
+            <option value={10} >温度</option>
+            <option value={20}>降水量</option>
+            <option value={30}>季节</option>
           </NativeSelect>
         }
         title="环境变化趋势(24小时)"
@@ -435,7 +166,7 @@ const EnvTrend = ({ className, ...rest }) => {
       </CardContent>
     </Card>
   );
-};
+}
 
 EnvTrend.propTypes = {
   className: PropTypes.string

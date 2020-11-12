@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   CardContent: {
-    height: '200px'
+    height: '300px'
   },
   differenceIcon: {
     color: colors.red[900]
