@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { Card, CardContent, Grid, colors, makeStyles } from '@material-ui/core';
 import EchartRender from './EchartRender';
+import { orange } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,89 +41,89 @@ const VideoRcg = ({ className, ...rest }) => {
       type: 'category',
       axisLine: {
         lineStyle: {
-          color: colors.common.white
+          color: colors.blue['A100']
         }
       },
       textStyle: {
-        color: colors.common.white
+        color: colors.blue['A100']
       },
       splitLine: {
         show: false,
         lineStyle: {
-          color: colors.common.white
+          color: colors.blue['A100']
         }
       },
       data: [
         {
           value: '00:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '02:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '04:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '06:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '08:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '10:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '12:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '14:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '16:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '18:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '20:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '22:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         }
       ]
@@ -131,16 +132,16 @@ const VideoRcg = ({ className, ...rest }) => {
       type: 'value',
       axisLine: {
         lineStyle: {
-          color: colors.common.white
+          color: colors.blue['A100']
         }
       },
       axisLabel: {
-        color: colors.common.white
+        color: colors.blue['A100']
       },
       splitLine: {
         show: true,
         lineStyle: {
-          color: colors.common.white
+          color: colors.blue['A100']
         }
       }
     },
@@ -174,7 +175,7 @@ const VideoRcg = ({ className, ...rest }) => {
         ],
         type: 'line',
         lineStyle: {
-          width: 6,
+          width: 3,
           shadowColor: '#000',
           shadowOffsetX: 1,
           shadowOffsetY: 2,
@@ -188,18 +189,18 @@ const VideoRcg = ({ className, ...rest }) => {
             colorStops: [
               {
                 offset: 0,
-                color: 'red' // 0% 处的颜色
+                color: colors.purple['900'] // 0% 处的颜色
               },
               {
                 offset: 1,
-                color: 'blue' // 100% 处的颜色
+                color: colors.purple['300'] // 100% 处的颜色
               }
             ],
 
             global: false // 缺省为 false
           }
         },
-
+        symbolSize: 0,
         smooth: true
       }
     ]
@@ -218,89 +219,89 @@ const VideoRcg = ({ className, ...rest }) => {
       type: 'category',
       axisLine: {
         lineStyle: {
-          color: colors.common.white
+          color: colors.blue['A100']
         }
       },
       textStyle: {
-        color: colors.common.white
+        color: colors.blue['A100']
       },
       splitLine: {
         show: false,
         lineStyle: {
-          color: colors.common.white
+          color: colors.blue['A100']
         }
       },
       data: [
         {
           value: '00:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '02:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '04:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '06:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '08:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '10:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '12:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '14:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '16:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '18:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '20:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '22:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         }
       ]
@@ -309,16 +310,16 @@ const VideoRcg = ({ className, ...rest }) => {
       type: 'value',
       axisLine: {
         lineStyle: {
-          color: colors.common.white
+          color: colors.blue['A100']
         }
       },
       axisLabel: {
-        color: colors.common.white
+        color: colors.blue['A100']
       },
       splitLine: {
         show: true,
         lineStyle: {
-          color: colors.common.white
+          color: colors.blue['A100']
         }
       }
     },
@@ -352,7 +353,7 @@ const VideoRcg = ({ className, ...rest }) => {
         ],
         type: 'line',
         lineStyle: {
-          width: 6,
+          width: 3,
           shadowColor: '#000',
           shadowOffsetX: 1,
           shadowOffsetY: 2,
@@ -366,18 +367,18 @@ const VideoRcg = ({ className, ...rest }) => {
             colorStops: [
               {
                 offset: 0,
-                color: 'red' // 0% 处的颜色
+                color: colors.orange['A100'] // 0% 处的颜色
               },
               {
                 offset: 1,
-                color: 'blue' // 100% 处的颜色
+                color: colors.orange['900'] // 100% 处的颜色
               }
             ],
 
             global: false // 缺省为 false
           }
         },
-
+        symbolSize: 0,
         smooth: true
       }
     ]
@@ -395,89 +396,89 @@ const VideoRcg = ({ className, ...rest }) => {
       type: 'category',
       axisLine: {
         lineStyle: {
-          color: colors.common.white
+          color: colors.blue['A100']
         }
       },
       textStyle: {
-        color: colors.common.white
+        color: colors.blue['A100']
       },
       splitLine: {
         show: false,
         lineStyle: {
-          color: colors.common.white
+          color: colors.blue['A100']
         }
       },
       data: [
         {
           value: '00:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '02:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '04:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '06:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '08:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '10:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '12:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '14:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '16:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '18:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '20:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         },
         {
           value: '22:00',
           textStyle: {
-            color: colors.common.white
+            color: colors.blue['A100']
           }
         }
       ]
@@ -486,16 +487,16 @@ const VideoRcg = ({ className, ...rest }) => {
       type: 'value',
       axisLine: {
         lineStyle: {
-          color: colors.common.white
+          color: colors.blue['A100']
         }
       },
       axisLabel: {
-        color: colors.common.white
+        color: colors.blue['A100']
       },
       splitLine: {
         show: true,
         lineStyle: {
-          color: colors.common.white
+          color: colors.blue['A100']
         }
       }
     },
@@ -529,7 +530,7 @@ const VideoRcg = ({ className, ...rest }) => {
         ],
         type: 'line',
         lineStyle: {
-          width: 6,
+          width: 3,
           shadowColor: '#000',
           shadowOffsetX: 1,
           shadowOffsetY: 2,
@@ -543,18 +544,18 @@ const VideoRcg = ({ className, ...rest }) => {
             colorStops: [
               {
                 offset: 0,
-                color: 'red' // 0% 处的颜色
+                color: colors.blue['A700'] // 0% 处的颜色
               },
               {
                 offset: 1,
-                color: 'blue' // 100% 处的颜色
+                color: colors.blue['200'] // 100% 处的颜色
               }
             ],
 
             global: false // 缺省为 false
           }
         },
-
+        symbolSize: 0,
         smooth: true
       }
     ]
