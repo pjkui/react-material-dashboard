@@ -569,16 +569,16 @@ const VideoRcg = ({ className, ...rest }) => {
     for (let index = 0; index < datas.length; index++) {
       datas[index] = Math.random() * 60;
     }
-
     setOptionPeople(optionsPeople1);
+
     const optionsMotor1 = { ...optionsMotorRaw };
     /// TODO:修改新的车流数据
     datas = optionsMotor1.series[0].data;
     for (let index = 0; index < datas.length; index++) {
       datas[index] = Math.random() * 60;
     }
-
     setOptionMotor(optionsMotor1);
+
     const optionsNonMotor1 = { ...optionsNonMotorRaw };
     /// TODO:修改新的非车流数据
     datas = optionsNonMotor1.series[0].data;
