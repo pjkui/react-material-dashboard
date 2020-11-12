@@ -81,20 +81,7 @@ const EnvTrend = ({ className, ...rest }) => {
     '20:00',
     '22:00'
   ];
-  const yData = [
-    -10,
-    -7,
-    -3,
-    5,
-    7,
-    12,
-    27,
-    11,
-    8,
-    5,
-    3,
-    -2
-  ];
+  const yData = [-10, -7, -3, 5, 7, 12, 27, 11, 8, 5, 3, -2];
 
   const optionsRaw = {
     tooltip: {},
@@ -142,8 +129,21 @@ const EnvTrend = ({ className, ...rest }) => {
     }
   };
 
-  const [options] = useState(optionsRaw);
-
+  const [options, setOptions] = useState(optionsRaw);
+  const [conditions, setConditions] = useState(10);
+  const handleChange = (evt) => {
+    if (evt == null || evt.target == null) {
+      return;
+    }
+    const conditionValue = parseInt(evt.target.value, 10);
+    setConditions(conditionValue);
+    const newOptionRaw = { ...optionsRaw };
+    const datas = newOptionRaw.series[0].data;
+    for (let index = 0; index < datas.length; index++) {
+      datas[index] = (Math.random() - 0.5) * 100;
+    }
+    setOptions(newOptionRaw);
+  };
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
       <CardHeader
@@ -151,8 +151,10 @@ const EnvTrend = ({ className, ...rest }) => {
           <NativeSelect
             id="demo-customized-select-native"
             input={<BootstrapInput />}
+            onChange={handleChange}
+            value={conditions}
           >
-            <option value={10} >温度</option>
+            <option value={10}>温度</option>
             <option value={20}>降水量</option>
             <option value={30}>季节</option>
           </NativeSelect>
@@ -166,7 +168,7 @@ const EnvTrend = ({ className, ...rest }) => {
       </CardContent>
     </Card>
   );
-}
+};
 
 EnvTrend.propTypes = {
   className: PropTypes.string
