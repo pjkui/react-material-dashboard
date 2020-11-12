@@ -118,6 +118,20 @@ const EnvTrend = ({ className, ...rest }) => {
         type: 'bar',
         data: yData,
         barMaxWidth: '30%',
+        itemStyle: {
+          color: {
+            colorStops: [
+              {
+                offset: 0,
+                color: colors.orange['A100'] // 0% 处的颜色
+              },
+              {
+                offset: 1,
+                color: colors.orange['900'] // 100% 处的颜色
+              }
+            ]
+          }
+        },
         animationDelay(idx) {
           return idx * 10 + 100;
         }
