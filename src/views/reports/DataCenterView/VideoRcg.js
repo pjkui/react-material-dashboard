@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { Card, CardContent, Grid, colors, makeStyles } from '@material-ui/core';
 import EchartRender from './EchartRender';
-import { orange } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
   root: {
