@@ -32,17 +32,17 @@ const EnvTrend = ({ className, ...rest }) => {
         marginTop: theme.spacing(3)
       }
     },
-    // select: {
-    //   marginTop: '0 !important',
-    // },
+    select: {
+      marginTop: '0 !important',
+    },
     input: {
-      color: colors.red['A400'],
+      color: colors.orange['900'],
       borderRadius: 4,
       position: 'relative',
-      backgroundColor: colors.orange['700'],
+      backgroundColor: theme.palette.background.selectColor,
       opacity: 0.2,
-      border: '1px solid #e65110',
-      fontSize: 16,
+      border: '1px solid #e6511055',
+      fontSize: 20,
       padding: '10px 26px 10px 12px',
       marginTop: '0',
       transition: theme.transitions.create(['border-color', 'box-shadow']),
@@ -61,8 +61,8 @@ const EnvTrend = ({ className, ...rest }) => {
       ].join(','),
       '&:focus': {
         borderRadius: 4,
-        borderColor: '#80bdff',
-        boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)'
+        borderColor: '#e65110',
+        boxShadow: '0 0 0 0.2rem #e6511055'
       }
     }
   }))(InputBase);
@@ -81,7 +81,20 @@ const EnvTrend = ({ className, ...rest }) => {
     '20:00',
     '22:00'
   ];
-  const yData = [-10, -7, -3, 5, 7, 12, 27, 11, 8, 5, 3, -2];
+  const yData = [
+    -10,
+    -7,
+    -3,
+    5,
+    7,
+    12,
+    27,
+    11,
+    8,
+    5,
+    3,
+    -2
+  ];
 
   const optionsRaw = {
     tooltip: {},
@@ -119,18 +132,25 @@ const EnvTrend = ({ className, ...rest }) => {
         data: yData,
         barMaxWidth: '30%',
         itemStyle: {
-          color: {
-            colorStops: [
-              {
-                offset: 0,
-                color: colors.orange['A100'] // 0% 处的颜色
-              },
-              {
-                offset: 1,
-                color: colors.orange['900'] // 100% 处的颜色
-              }
-            ]
-          }
+          barBorderRadius: [5, 5, 0, 0], //（顺时针左上，右上，右下，左下）
+        },
+        color: {
+          type: 'linear',
+          x: 0,
+          y: 0,
+          x2: 1,
+          y2: 0,
+          colorStops: [
+            {
+              offset: 0,
+              color: colors.orange['300'] // 50% 处的颜色
+            },
+            {
+              offset: 1,
+              color: colors.orange['900']// 100% 处的颜色
+            }
+          ],
+          global: false // 缺省为 false
         },
         animationDelay(idx) {
           return idx * 10 + 100;
@@ -144,20 +164,22 @@ const EnvTrend = ({ className, ...rest }) => {
   };
 
   const [options, setOptions] = useState(optionsRaw);
-  const [conditions, setConditions] = useState(10);
-  const handleChange = (evt) => {
+  const [optionsValue, setOptionsValue] = useState(10);
+
+  const handleChage = (evt) => {
     if (evt == null || evt.target == null) {
       return;
     }
-    const conditionValue = parseInt(evt.target.value, 10);
-    setConditions(conditionValue);
-    const newOptionRaw = { ...optionsRaw };
-    const datas = newOptionRaw.series[0].data;
+    const newOptionsValue = parseInt(evt.target.value, 10);
+    setOptionsValue(newOptionsValue);
+    const newOptionsRaw = { ...optionsRaw };
+    const datas = newOptionsRaw.series[0].data;
     for (let index = 0; index < datas.length; index++) {
-      datas[index] = (Math.random() - 0.5) * 100;
+      datas[index] = (Math.random() - 0.5) * 200;
+      setOptions(newOptionsRaw);
     }
-    setOptions(newOptionRaw);
-  };
+  }
+
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
       <CardHeader
@@ -165,10 +187,10 @@ const EnvTrend = ({ className, ...rest }) => {
           <NativeSelect
             id="demo-customized-select-native"
             input={<BootstrapInput />}
-            onChange={handleChange}
-            value={conditions}
+            onChange={handleChage}
+            value={optionsValue}
           >
-            <option value={10}>温度</option>
+            <option value={10} >温度</option>
             <option value={20}>降水量</option>
             <option value={30}>季节</option>
           </NativeSelect>
@@ -182,7 +204,7 @@ const EnvTrend = ({ className, ...rest }) => {
       </CardContent>
     </Card>
   );
-};
+}
 
 EnvTrend.propTypes = {
   className: PropTypes.string

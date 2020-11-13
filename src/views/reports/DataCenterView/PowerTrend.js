@@ -18,6 +18,14 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.cardSection,
     color: colors.common.white
+  },
+  dayColor: {
+    color: colors.orange['900'],
+    backgroundColor: theme.palette.background.selectColor,
+  },
+  monthColor: {
+    color: colors.cyan['A200'],
+    backgroundColor: theme.palette.background.cardColor,
   }
 }));
 
@@ -448,11 +456,11 @@ const PowerTrend = ({ className, ...rest }) => {
             color="secondary"
             aria-label="outlined secondary button group"
           >
-            <Button onClick={showDayData} data={12}>
+            <Button onClick={showDayData} data={12} className={clsx(classes.dayColor, className)}>
               日
             </Button>
-            <Button onClick={showMonthData}>月</Button>
-            <Button onClick={showYearData}>年</Button>
+            <Button onClick={showMonthData} className={clsx(classes.monthColor, className)}>月</Button>
+            <Button onClick={showYearData} className={clsx(classes.monthColor, className)}>年</Button>
           </ButtonGroup>
         }
         title="用电趋势"

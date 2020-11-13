@@ -14,6 +14,7 @@ import {
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import EchartRender from './EchartRender';
+import ApDayAccess from './ApDayAccess';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -78,193 +79,190 @@ const BootstrapInput = withStyles((theme) => ({
   }
 }))(InputBase);
 
-const VideoRcg = ({ className, ...rest }) => {
+const ApStatistics = ({ className, ...rest }) => {
   const classes = useStyles();
 
-  const optionsPeopleRaw = {
+  const flowOptionsRaw = {
     grid: {
       left: 0,
       right: 10,
-      top: 10,
       bottom: 0,
       containLabel: true
     },
-    xAxis: {
-      type: 'category',
-      axisLine: {
-        lineStyle: {
-          color: colors.blue['A100']
-        }
-      },
+    title: {
+      text: '总流量吞吐率(最近五分钟)',
+      // subtext: '纯属虚构',
       textStyle: {
-        color: colors.blue['A100']
-      },
-      splitLine: {
-        show: false,
-        lineStyle: {
-          color: colors.blue['A100']
-        }
-      },
-      data: [
-        {
-          value: '00:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '02:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '04:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '06:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '08:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '10:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '12:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '14:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '16:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '18:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '20:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '22:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        }
-      ]
-    },
-    yAxis: {
-      type: 'value',
-      axisLine: {
-        lineStyle: {
-          color: colors.blue['A100']
-        }
-      },
-      axisLabel: {
-        color: colors.blue['A100']
-      },
-      splitLine: {
-        show: true,
-        lineStyle: {
-          color: colors.blue['A100']
-        }
+        color: colors.common.white
       }
     },
     tooltip: {
-      show: true,
-      trigger: 'item',
-      position: 'top',
-      formatter: '{c0} <b>{b0}</b>',
-      backgroundColor: '#ff0',
-      borderColor: '#333',
-      borderWidth: 2,
+      trigger: 'axis'
+    },
+    legend: {
+      data: [
+        {
+          name: '发送',
+          icon: 'circle'
+        },
+        {
+          name: '接收',
+          icon: 'circle'
+        }
+      ],
       textStyle: {
-        color: '#f0f'
+        color: colors.common.white
+      },
+      right: '10%',
+      // icon:'circle'
+    },
+    toolbox: {
+      show: false,
+      feature: {
+        dataView: { show: false, readOnly: false },
+        magicType: { show: false, type: ['line', 'bar'] },
+        restore: { show: false },
+        saveAsImage: { show: false }
       }
     },
-    series: [
+    calculable: false,
+    xAxis: [
       {
-        data: [
-          0,
-          10.2,
-          20.1,
-          13.4,
-          10.9,
-          30.3,
-          6.2,
-          9.0,
-          11.2,
-          36.8,
-          11.7,
-          5.6
-        ],
-        type: 'line',
-        lineStyle: {
-          width: 3,
-          shadowColor: '#000',
-          shadowOffsetX: 1,
-          shadowOffsetY: 2,
-          shadowBlur: 4,
-          color: {
-            type: 'linear',
-            x: 0,
-            y: 0,
-            x2: 0,
-            y2: 1,
-            colorStops: [
-              {
-                offset: 0,
-                color: colors.purple['300'] // 0% 处的颜色
-              },
-              {
-                offset: 1,
-                color: colors.purple['A700'] // 100% 处的颜色
-              }
-            ],
-            global: false // 缺省为 false
+        type: 'category',
+        data: ['15:10', '15:11', '15:12', '15:13', '15:14'],
+        axisLine: {
+          lineStyle: {
+            color: colors.blue['A100']
           }
         },
-        symbolSize: 0,
-        smooth: true
+        splitLine: {
+          show: false,
+          lineStyle: {
+            color: colors.blue['A100']
+          }
+        }
+      },
+    ],
+    yAxis: [
+      {
+        type: 'value',
+        data: ['0', '50', '100', '150'],
+        axisLine: {
+          lineStyle: {
+            color: colors.blue['A100']
+          }
+        },
+        splitLine: {
+          show: true,
+          lineStyle: {
+            color: colors.blue['A100']
+          }
+        }
+      }
+    ],
+    series: [
+      {
+        name: '发送',
+        type: 'bar',
+        data: [100, 70, 55, 20.0, 6.4],
+        barCategoryGapGap: '100%',
+        barGap: '80%',
+        barMaxWidth: '12%',
+        itemStyle: {
+          barBorderRadius: [5, 5, 0, 0], //（顺时针左上，右上，右下，左下）
+        },
+        color: {
+          type: 'linear',
+          x: 0,
+          y: 0,
+          x2: 0,
+          y2: 1,
+          colorStops: [
+            {
+              offset: 0,
+              color: colors.blue['400'] // 50% 处的颜色
+            },
+            {
+              offset: 1,
+              color: colors.blue['A700']// 100% 处的颜色
+            }
+          ],
+          global: false // 缺省为 false
+        },
+        animationDelay(idx) {
+          return idx * 10 + 100;
+        },
+        // markPoint: {
+        //   data: [
+        //     { type: 'max', name: '最大值' },
+        //     { type: 'min', name: '最小值' }
+        //   ]
+        // },
+        // markLine: {
+        //     data: [
+        //         {type: 'average', name: '平均值'}
+        //     ]
+        // }
+      },
+      {
+        name: '接收',
+        type: 'bar',
+        data: [130, 90, 60, 48.7, 18.8,],
+        barCategoryGapGap: '100%',
+        barGap: '80%',
+        barMaxWidth: '12%',
+        itemStyle: {
+          barBorderRadius: [5, 5, 0, 0], //（顺时针左上，右上，右下，左下）
+        },
+        color: {
+          type: 'linear',
+          x: 0,
+          y: 0,
+          x2: 0,
+          y2: 1,
+          colorStops: [
+            {
+              offset: 0,
+              color: colors.orange['A200'] // 50% 处的颜色
+            },
+            {
+              offset: 1,
+              color: colors.orange['900']// 100% 处的颜色
+            }
+          ],
+          global: false // 缺省为 false
+        },
+        animationDelay(idx) {
+          return idx * 10 + 100;
+        },
+        // markPoint: {
+        //   data: [
+        //     { name: '年最高', value: 182.2, xAxis: 7, yAxis: 183 },
+        //     { name: '年最低', value: 2.3, xAxis: 11, yAxis: 3 }
+        //   ]
+        // },
+        // markLine: {
+        //     data: [
+        //         {type: 'average', name: '平均值'}
+        //     ]
+        // }
       }
     ]
   };
-  const [optionsPeople, setOptionPeople] = useState(optionsPeopleRaw);
+  const [flowOptions, setFlowOptions] = useState(flowOptionsRaw);
 
-  const optionsMotorRaw = {
+  const onlineOptionsRaw = {
     grid: {
       left: 0,
       right: 10,
-      top: 10,
       bottom: 0,
       containLabel: true
+    },
+    title: {
+      text: '上网时长',
+      textStyle: {
+        color: colors.common.white
+      }
     },
     xAxis: {
       type: 'category',
@@ -284,77 +282,35 @@ const VideoRcg = ({ className, ...rest }) => {
       },
       data: [
         {
-          value: '00:00',
+          value: '0~10min',
           textStyle: {
             color: colors.blue['A100']
           }
         },
         {
-          value: '02:00',
+          value: '10~30min',
           textStyle: {
             color: colors.blue['A100']
           }
         },
         {
-          value: '04:00',
+          value: '30min~2h',
           textStyle: {
             color: colors.blue['A100']
           }
         },
         {
-          value: '06:00',
+          value: '2~4h',
           textStyle: {
             color: colors.blue['A100']
           }
         },
         {
-          value: '08:00',
+          value: '>10h',
           textStyle: {
             color: colors.blue['A100']
-          }
+          },
         },
-        {
-          value: '10:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '12:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '14:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '16:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '18:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '20:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '22:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        }
       ]
     },
     yAxis: {
@@ -389,253 +345,73 @@ const VideoRcg = ({ className, ...rest }) => {
     series: [
       {
         data: [
-          0,
-          10.2,
-          20.1,
-          13.4,
-          10.9,
-          30.3,
-          6.2,
-          9.0,
-          11.2,
-          36.8,
-          11.7,
-          5.6
+          200,
+          300,
+          390,
+          550,
+          250,
+          200,
         ],
-        type: 'line',
-        lineStyle: {
-          width: 3,
-          shadowColor: '#000',
-          shadowOffsetX: 1,
-          shadowOffsetY: 2,
-          shadowBlur: 4,
-          color: {
-            type: 'linear',
-            x: 0,
-            y: 0,
-            x2: 0,
-            y2: 1,
-            colorStops: [
-              {
-                offset: 0,
-                color: colors.yellow['200'] // 0% 处的颜色
-              },
-              {
-                offset: 1,
-                color: colors.orange['800'] // 100% 处的颜色
-              }
-            ],
-            global: false // 缺省为 false
-          }
+        type: 'bar',
+        barMaxWidth: '20%',
+        itemStyle: {
+          barBorderRadius: [5, 5, 0, 0], //（顺时针左上，右上，右下，左下）
         },
-        symbolSize: 0,
+        color: {
+          type: 'linear',
+          x: 0,
+          y: 0,
+          x2: 0,
+          y2: 1,
+          colorStops: [
+            {
+              offset: 0,
+              color: colors.cyan['A200'] // 50% 处的颜色
+            },
+            {
+              offset: 1,
+              color: colors.cyan['600']// 100% 处的颜色
+            }
+          ],
+          global: false // 缺省为 false
+        },
+        // symbolSize: 0,
         smooth: true
       }
     ]
   };
-  const [optionsMotor, setOptionMotor] = useState(optionsMotorRaw);
-  const optionsNonMotorRaw = {
-    grid: {
-      left: 0,
-      right: 10,
-      top: 10,
-      bottom: 0,
-      containLabel: true
-    },
-    xAxis: {
-      type: 'category',
-      axisLine: {
-        lineStyle: {
-          color: colors.blue['A100']
-        }
-      },
-      textStyle: {
-        color: colors.blue['A100']
-      },
-      splitLine: {
-        show: false,
-        lineStyle: {
-          color: colors.blue['A100']
-        }
-      },
-      data: [
-        {
-          value: '00:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '02:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '04:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '06:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '08:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '10:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '12:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '14:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '16:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '18:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '20:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        },
-        {
-          value: '22:00',
-          textStyle: {
-            color: colors.blue['A100']
-          }
-        }
-      ]
-    },
-    yAxis: {
-      type: 'value',
-      axisLine: {
-        lineStyle: {
-          color: colors.blue['A100']
-        }
-      },
-      axisLabel: {
-        color: colors.blue['A100']
-      },
-      splitLine: {
-        show: true,
-        lineStyle: {
-          color: colors.blue['A100']
-        }
-      }
-    },
-    tooltip: {
-      show: true,
-      trigger: 'item',
-      position: 'top',
-      formatter: '{c0} <b>{b0}</b>',
-      backgroundColor: '#ff0',
-      borderColor: '#333',
-      borderWidth: 2,
-      textStyle: {
-        color: '#f0f'
-      }
-    },
-    series: [
-      {
-        data: [
-          0,
-          10.2,
-          20.1,
-          13.4,
-          10.9,
-          30.3,
-          6.2,
-          9.0,
-          11.2,
-          36.8,
-          11.7,
-          5.6
-        ],
-        type: 'line',
-        lineStyle: {
-          width: 3,
-          shadowColor: '#000',
-          shadowOffsetX: 1,
-          shadowOffsetY: 2,
-          shadowBlur: 4,
-          color: {
-            type: 'linear',
-            x: 0,
-            y: 0,
-            x2: 0,
-            y2: 1,
-            colorStops: [
-              {
-                offset: 0,
-                color: colors.blue['100'] // 0% 处的颜色
-              },
-              {
-                offset: 1,
-                color: colors.blue['700'] // 100% 处的颜色
-              }
-            ],
-            global: false // 缺省为 false
-          }
-        },
-        symbolSize: 0,
-        smooth: true
-      }
-    ]
-  };
-  const [optionsNonMotor, setOptionNonMotor] = useState(optionsNonMotorRaw);
+  const [onlineOptions, setOnlineOptions] = useState(onlineOptionsRaw);
+
+  const peopleNumOptionsRaw = {
+    data: 1234567,
+  }
+  const [peopleNumOptions, setPeopleNumOptions] = useState(peopleNumOptionsRaw);
+
   const SwitchVideoSource = (evt) => {
     console.log(evt);
-    const optionsPeople1 = { ...optionsPeopleRaw };
-    ///TODO:修改新的人流数据
+    const newFlowOptions = { ...flowOptionsRaw };
+    ///TODO:修改新的信息量吞吐率
     // optionsPeople1.xAxis.data = xData;
-    let datas = optionsPeople1.series[0].data;
+    let datas = newFlowOptions.series[0].data;
     for (let index = 0; index < datas.length; index++) {
       datas[index] = Math.random() * 60;
     }
+    setFlowOptions(newFlowOptions);
 
-    setOptionPeople(optionsPeople1);
-    const optionsMotor1 = { ...optionsMotorRaw };
-    ///TODO:修改新的车流数据
-    datas = optionsMotor1.series[0].data;
+    const newOnlineOptions = { ...onlineOptionsRaw };
+    ///TODO:修改新的上网时长
+    datas = newOnlineOptions.series[0].data;
     for (let index = 0; index < datas.length; index++) {
       datas[index] = Math.random() * 60;
     }
+    setOnlineOptions(newOnlineOptions);
 
-    setOptionMotor(optionsMotor1);
-    const optionsNonMotor1 = { ...optionsNonMotorRaw };
-    ///TODO:修改新的非车流数据
-    datas = optionsNonMotor1.series[0].data;
-    for (let index = 0; index < datas.length; index++) {
-      datas[index] = Math.random() * 60;
-    }
-    setOptionNonMotor(optionsNonMotor1);
+    const NewPeopleNumOptions = { ...peopleNumOptionsRaw };
+    ///TODO:修改新的接入人数
+    let oldData = NewPeopleNumOptions.data;
+    oldData = Math.random() * 600000;
+    console.log(oldData);
+    setPeopleNumOptions(NewPeopleNumOptions);
   };
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
@@ -646,30 +422,30 @@ const VideoRcg = ({ className, ...rest }) => {
             onChange={SwitchVideoSource}
             input={<BootstrapInput />}
           >
-            <option value={10}>视频源切换1</option>
-            <option value={20}>视频源切换2</option>
-            <option value={30}>视频源切换3</option>
+            <option value={10}>设备来源1</option>
+            <option value={20}>设备来源2</option>
+            <option value={30}>设备来源3</option>
           </NativeSelect>
         }
-        title="视频识别(24小时)"
+        title="AP统计"
       />
       <Grid container spacing={3}>
         <Grid item sm={12} md={12} lg={12}>
           <CardContent className={clsx(classes.cardContent, className)}>
             <Grid container spacing={3}>
-              <Grid item sm={12} md={12} lg={4}>
+              <Grid item sm={12} md={4} lg={2}>
                 <Box height={300} position="relative">
-                  <EchartRender options={optionsPeople} width={100} height={100} />
+                  <ApDayAccess options={peopleNumOptions} />
                 </Box>
               </Grid>
-              <Grid item sm={12} md={12} lg={4}>
+              <Grid item sm={12} md={4} lg={5}>
                 <Box height={300} position="relative">
-                  <EchartRender options={optionsMotor} width={100} height={100} />
+                  <EchartRender options={flowOptions} />
                 </Box>
               </Grid>
-              <Grid item sm={12} md={12} lg={4}>
+              <Grid item sm={12} md={4} lg={5}>
                 <Box height={300} position="relative">
-                  <EchartRender options={optionsNonMotor} width={100} height={100} />
+                  <EchartRender options={onlineOptions} />
                 </Box>
               </Grid>
             </Grid>
@@ -680,8 +456,8 @@ const VideoRcg = ({ className, ...rest }) => {
   );
 };
 
-VideoRcg.propTypes = {
+ApStatistics.propTypes = {
   className: PropTypes.string
 };
 
-export default VideoRcg;
+export default ApStatistics;
