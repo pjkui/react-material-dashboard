@@ -8,11 +8,12 @@ const theme = createMuiTheme({
       cardSection: '#1a2380',
       cardColor: '#252ea3',
       TopBarColor: '#161b74',
+      selectColor: 'rgb(53,47,123)',
       default: colors.common.white,
       paper: colors.common.white
     },
     primary: {
-      main: colors.indigo[500]
+      main: colors.indigo[400]
     },
     secondary: {
       main: colors.indigo[500]
@@ -20,7 +21,8 @@ const theme = createMuiTheme({
     text: {
       primary: colors.blue['A100'],
       secondary: colors.blueGrey[600],
-      chartTitle: colors.blue['A400']
+      chartTitle: colors.blue['A400'],
+      selectFond: 'rgb(255,110,0)'
     }
   },
   shadows,

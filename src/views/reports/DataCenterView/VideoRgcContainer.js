@@ -17,8 +17,21 @@ import VideoRcg from './VideoRcg';
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100%',
+    marginLeft: 16,
+    borderRadius: 10,
     backgroundColor: theme.palette.background.cardSection,
-    color: theme.palette.primary
+    color: colors.common.white,
+    CardContent: {
+      height: '100%',
+    }
+  },
+  headerLay: {
+    margin: '0 -8px',
+  },
+  cardContent: {
+    backgroundColor: theme.palette.background.cardColor,
+    borderRadius: 10,
+    boxShadow: '-4px -4px 10px blue',
   },
   // avatar: {
   //   backgroundColor: colors.red[600],
@@ -45,11 +58,10 @@ const BootstrapInput = withStyles((theme) => ({
   //   marginTop: '0 !important',
   // },
   input: {
-    color: colors.orange['900'],
+    color: theme.palette.text.selectFond,
     borderRadius: 4,
     position: 'relative',
     backgroundColor: theme.palette.background.selectColor,
-    opacity: 0.2,
     border: '1px solid #e6511055',
     fontSize: 20,
     padding: '10px 26px 10px 12px',
@@ -89,6 +101,7 @@ const VideoRgcContainer = ({ className, ...rest }) => {
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
       <CardHeader
+        className={clsx(classes.headerLay, className)}
         title="视频识别(24小时)"
         action={
           <NativeSelect
@@ -103,7 +116,7 @@ const VideoRgcContainer = ({ className, ...rest }) => {
           </NativeSelect>
         }
       />
-      <CardContent>
+      <CardContent className={clsx(classes.cardContent, className)}>
         <Grid container spacing={3}>
           <Grid item sm={12} md={12} lg={12}>
             <VideoRcg sourcetype={videoSource} />

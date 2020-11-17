@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
       height: '100%'
     }
   },
+
   CardContent: {
     height: '300px'
   },
@@ -24,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1)
   }
 }));
+
 let SwitchVideoSourceOutter = null;
 const VideoRcg = ({ className, ...rest }) => {
   const classes = useStyles();
@@ -146,14 +148,14 @@ const VideoRcg = ({ className, ...rest }) => {
     },
     tooltip: {
       show: true,
-      trigger: 'item',
+      trigger: 'axis',
       position: 'top',
       formatter: '{c0} <b>{b0}</b>',
-      backgroundColor: '#ff0',
+      backgroundColor: 'rgba(239,108,0,0.3)',
       borderColor: '#333',
       borderWidth: 2,
       textStyle: {
-        color: '#f0f'
+        color: colors.orange[900],
       }
     },
     series: [
@@ -199,6 +201,7 @@ const VideoRcg = ({ className, ...rest }) => {
             global: false // 缺省为 false
           }
         },
+        showSymbol: false,
         symbolSize: 0,
         smooth: true
       }
@@ -324,14 +327,14 @@ const VideoRcg = ({ className, ...rest }) => {
     },
     tooltip: {
       show: true,
-      trigger: 'item',
+      trigger: 'axis',
       position: 'top',
       formatter: '{c0} <b>{b0}</b>',
-      backgroundColor: '#ff0',
+      backgroundColor: 'rgba(239,108,0,0.3)',
       borderColor: '#333',
       borderWidth: 2,
       textStyle: {
-        color: '#f0f'
+        color: colors.orange[900],
       }
     },
     series: [
@@ -377,6 +380,7 @@ const VideoRcg = ({ className, ...rest }) => {
             global: false // 缺省为 false
           }
         },
+        showSymbol: false,
         symbolSize: 0,
         smooth: true
       }
@@ -501,14 +505,14 @@ const VideoRcg = ({ className, ...rest }) => {
     },
     tooltip: {
       show: true,
-      trigger: 'item',
+      trigger: 'axis',
       position: 'top',
       formatter: '{c0} <b>{b0}</b>',
-      backgroundColor: '#ff0',
+      backgroundColor: 'rgba(239,108,0,0.3)',
       borderColor: '#333',
       borderWidth: 2,
       textStyle: {
-        color: '#f0f'
+        color: colors.orange[900],
       }
     },
     series: [
@@ -554,6 +558,7 @@ const VideoRcg = ({ className, ...rest }) => {
             global: false // 缺省为 false
           }
         },
+        showSymbol: false,
         symbolSize: 0,
         smooth: true
       }

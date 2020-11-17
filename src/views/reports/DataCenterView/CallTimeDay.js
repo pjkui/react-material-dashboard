@@ -10,30 +10,31 @@ import {
   colors,
   makeStyles
 } from '@material-ui/core';
-// import { color } from 'echarts/lib/export';
-import CalendarToday from '@material-ui/icons/CalendarToday';
+import AccessTime from '@material-ui/icons/AccessTime';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100%',
-    backgroundColor: colors.purple['700'],
+    borderRadius: 10,
+    boxShadow: '-4px -4px 10px orange',
+    backgroundColor: colors.orange['800'],
     color: colors.common.white
   },
   avatar: {
-    backgroundColor: colors.purple['A100'],
+    backgroundColor: colors.orange['A200'],
     height: 80,
     width: 80
   },
   differenceIcon: {
-    color: colors.red[900]
+    color: colors.common.white
   },
   differenceValue: {
-    color: colors.red[900],
+    color: colors.common.white,
     marginRight: theme.spacing(1)
   }
 }));
 
-const CallTimesMonth = ({ className, ...rest }) => {
+const CallTimeDay = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -45,21 +46,21 @@ const CallTimesMonth = ({ className, ...rest }) => {
               color="textSecondary"
               gutterBottom
               variant="h5"
-              style={{ paddingTop: 10 }}
+              style={{ paddingTop: 10, color: colors.common.white }}
             >
-              30天紧急呼叫(次)
+              24小时紧急呼叫(次)
             </Typography>
             <Typography
               color="textPrimary"
               variant="h1"
-              style={{ paddingTop: 10 }}
+              style={{ paddingTop: 10, color: colors.common.white }}
             >
               123456
             </Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
-              <CalendarToday />
+              <AccessTime />
             </Avatar>
           </Grid>
         </Grid>
@@ -68,8 +69,8 @@ const CallTimesMonth = ({ className, ...rest }) => {
   );
 };
 
-CallTimesMonth.propTypes = {
+CallTimeDay.propTypes = {
   className: PropTypes.string
 };
 
-export default CallTimesMonth;
+export default CallTimeDay;

@@ -3,10 +3,10 @@ import { Container, Grid, makeStyles } from '@material-ui/core';
 import Page from 'src/components/Page';
 import ApStatistics from './ApStatistics';
 import EnvTrend from './EnvTrend';
-import CallTimes from './CallTimes';
+import CallContainer from './CallContainer';
 import VideoRgcContainer from './VideoRgcContainer';
 import PowerTrend from './PowerTrend';
-import FaultStatistics from './FaultStatistics';
+import FaultStatistics from './FaultContainer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,7 +34,7 @@ const DataCenter = () => {
             <VideoRgcContainer />
           </Grid>
           <Grid item lg={4} md={6} xl={3} xs={12} sm={12}>
-            <CallTimes />
+            <CallContainer />
           </Grid>
           <Grid item lg={5} md={6} xl={5} xs={12}>
             <EnvTrend />

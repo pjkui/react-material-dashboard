@@ -13,6 +13,7 @@ import {
   ButtonGroup
 } from '@material-ui/core';
 import EchartRender from './EchartRender';
+import theme from 'src/theme';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
   monthColor: {
     color: colors.cyan['A200'],
     backgroundColor: theme.palette.background.cardColor,
+  },
+  buttonRight: {
+    marginRight: 16,
   }
 }));
 
@@ -151,14 +155,14 @@ const PowerTrend = ({ className, ...rest }) => {
     },
     tooltip: {
       show: true,
-      trigger: 'item',
-      position: 'top',
-      formatter: '{c0} <b>{b0}</b>',
-      backgroundColor: '#ff0',
+      trigger: 'axis',
+      // position: 'center',不设置position,则是鼠标的位置
+      formatter: '<b>{c}</b> {b}',
+      backgroundColor: 'rgba(239,108,0,0.2)',
       borderColor: '#333',
       borderWidth: 2,
       textStyle: {
-        color: '#f0f'
+        color: theme.palette.text.selectFond,
       }
     },
     series: [
@@ -207,6 +211,7 @@ const PowerTrend = ({ className, ...rest }) => {
             global: false // 缺省为 false
           }
         },
+        showSymbol: false,
         symbolSize: 0,
         smooth: true
       }
@@ -451,6 +456,7 @@ const PowerTrend = ({ className, ...rest }) => {
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
       <CardHeader
+        className={clsx(classes.buttonRight, className)}
         action={
           <ButtonGroup
             color="secondary"

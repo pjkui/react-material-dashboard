@@ -11,16 +11,13 @@ import {
   Toolbar,
   Typography,
   makeStyles,
-  colors,
-  NativeSelect,
   InputLabel,
-  InputBase
+  InputBase,
+  NativeSelect,
+  colors,
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-// import MenuIcon from '@material-ui/icons/Menu';
-// import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
-// import InputIcon from '@material-ui/icons/Input';
-// import Logo from 'src/components/Logo';
+import MenuIcon from '@material-ui/icons/Menu';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
@@ -69,7 +66,8 @@ const BootstrapInput = withStyles((theme) => ({
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.TopBarColor,
-    oldColor: colors.blue[100]
+    padding: '0 12px',
+    boxShadow: '4px 4px 20px rgba(20,20,120,1)',
   },
   avatar: {
     width: 60,
@@ -86,9 +84,8 @@ const TopBar = ({
   const [notifications] = useState([]);
   const [address, setAddress] = useState(10);
   const handleChange = (event) => {
-    console.log(event);
     setAddress(event.target.value);
-  };
+  }
 
   return (
     <AppBar
@@ -98,14 +95,12 @@ const TopBar = ({
     >
       <Toolbar>
         <RouterLink to="/">
-          {/* <Logo /> */}
           <DashboardIcon />
         </RouterLink>
         <Typography variant="h4" component="h4">
           &nbsp;大数据
         </Typography>
         <Box flexGrow={1} />
-        {/* <FormControl1 className={classes.margin}> */}
         <InputLabel htmlFor="demo-customized-select-native">域切换</InputLabel>
         <NativeSelect
           id="demo-customized-select-native"
@@ -117,8 +112,7 @@ const TopBar = ({
           <option value={20}>上海市闵行区莘庄镇七莘路2号</option>
           <option value={30}>上海市闵行区莘庄镇七莘路3号</option>
         </NativeSelect>
-        {/* </FormControl> */}
-        <Hidden smDown>
+        <Hidden mdDown>
           <IconButton color="inherit">
             <Badge
               badgeContent={notifications.length}
@@ -135,14 +129,12 @@ const TopBar = ({
             <PowerSettingsNewIcon />
           </IconButton>
         </Hidden>
-        <Hidden mdUp>
+        <Hidden lgUp>
           <IconButton
             color="inherit"
             onClick={onMobileNavOpen}
           >
-            <AccountCircleIcon />
-            <PowerSettingsNewIcon />
-            {/* <MenuIcon /> */}
+            <MenuIcon />
           </IconButton>
         </Hidden>
       </Toolbar>

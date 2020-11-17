@@ -19,6 +19,9 @@ import ApDayAccess from './ApDayAccess';
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100%',
+    marginRight: 16,
+    paddingLeft: 0,
+    borderRadius: 10,
     backgroundColor: theme.palette.background.cardSection,
     color: colors.common.white,
     CardContent: {
@@ -27,6 +30,8 @@ const useStyles = makeStyles((theme) => ({
   },
   cardContent: {
     backgroundColor: theme.palette.background.cardColor,
+    borderRadius: 10,
+    boxShadow: '-4px -4px 10px blue',
   },
   differenceIcon: {
     color: colors.red[900]
@@ -34,6 +39,10 @@ const useStyles = makeStyles((theme) => ({
   differenceValue: {
     color: colors.red[900],
     marginRight: theme.spacing(1)
+  },
+  headerLay: {
+    paddingLeft: 0,
+    marginRight: 6,
   }
 }));
 
@@ -48,11 +57,11 @@ const BootstrapInput = withStyles((theme) => ({
   //   marginTop: '0 !important',
   // },
   input: {
-    color: colors.orange['900'],
+    color: theme.palette.text.selectFond,
     borderRadius: 4,
     position: 'relative',
+    left: 10,
     backgroundColor: theme.palette.background.selectColor,
-    opacity: 0.2,
     border: '1px solid #e6511055',
     fontSize: 20,
     padding: '10px 26px 10px 12px',
@@ -334,12 +343,12 @@ const ApStatistics = ({ className, ...rest }) => {
       show: true,
       trigger: 'item',
       position: 'top',
-      formatter: '{c0} <b>{b0}</b>',
-      backgroundColor: '#ff0',
+      formatter: '<b>{c}</b> {b}',
+      backgroundColor: 'rgba(239,108,0,0.2)',
       borderColor: '#333',
       borderWidth: 2,
       textStyle: {
-        color: '#f0f'
+        color: colors.orange['900'],
       }
     },
     series: [
@@ -416,6 +425,7 @@ const ApStatistics = ({ className, ...rest }) => {
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
       <CardHeader
+        className={clsx(classes.headerLay, className)}
         action={
           <NativeSelect
             id="demo-customized-select-native"

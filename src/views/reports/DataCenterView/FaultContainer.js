@@ -16,13 +16,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: '100%',
     backgroundColor: theme.palette.background.cardSection,
-    color: theme.palette.primary
+    color: colors.common.white,
+    paddingLeft: 0,
   },
-  // avatar: {
-  //   backgroundColor: colors.red[600],
-  //   height: 56,
-  //   width: 56
-  // },
   differenceIcon: {
     color: colors.red[900]
   },
@@ -31,10 +27,8 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1)
   }
 }));
-
-const FaultStatistics = ({ className, ...rest }) => {
+const FaultContainer = ({ className, ...rest }) => {
   const classes = useStyles();
-
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
       <CardHeader title="告警状态" />
@@ -51,9 +45,8 @@ const FaultStatistics = ({ className, ...rest }) => {
     </Card>
   );
 };
-
-FaultStatistics.propTypes = {
+FaultContainer.propTypes = {
   className: PropTypes.string
 };
 
-export default FaultStatistics;
+export default FaultContainer;

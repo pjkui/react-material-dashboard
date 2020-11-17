@@ -14,13 +14,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: '100%',
     backgroundColor: theme.palette.background.cardColor,
-    color: colors.common.white
+    color: colors.common.white,
   },
-  // avatar: {
-  //   backgroundColor: colors.orange['A200'],
-  //   height: 80,
-  //   width: 80
-  // },
+  cardContainer: {
+    paddingRight: -6,
+  },
   differenceIcon: {
     color: colors.common.white
   },
@@ -35,21 +33,21 @@ const ApDayAccess = ({ className, ...rest }) => {
 
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
-      <CardContent>
+      <CardContent className={clsx(classes.cardContainer, className)}>
         <Grid container justify="space-between" spacing={3}>
           <Grid item>
             <Typography
               color="textSecondary"
               gutterBottom
               variant="h5"
-              style={{ paddingTop: 10 }}
+              style={{ padding: '10px', color: colors.common.white }}
             >
               24小时接入人数
             </Typography>
             <Typography
               color="textPrimary"
               variant="h1"
-              style={{ paddingTop: 10 }}
+              style={{ padding: '10px' }}
             >
               1234567
             </Typography>

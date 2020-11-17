@@ -9,8 +9,8 @@ import {
   makeStyles,
   Box
 } from '@material-ui/core';
-import CallTimesDay from './CallTimesDay';
-import CallTimesMonth from './CallTimesMonth';
+import CallTimeDay from './CallTimeDay';
+import CallTimeMonth from './CallTimeMonth';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1)
   }
 }));
-const CallTimes = ({ className, ...rest }) => {
+const CallContainer = ({ className, ...rest }) => {
   const classes = useStyles();
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
@@ -34,13 +34,13 @@ const CallTimes = ({ className, ...rest }) => {
         <Box height={300} position="relative">
           <Grid container spacing={3}>
             <Grid item sm={12} md={12} lg={12}>
-              <Box height={180} position="relative" marginBottom={2}>
-                <CallTimesDay />
+              <Box height={177} position="relative" marginBottom={2}>
+                <CallTimeDay />
               </Box>
             </Grid>
             <Grid item sm={12} md={12} lg={12}>
-              <Box height={180} position="relative">
-                <CallTimesMonth />
+              <Box height={176} position="relative">
+                <CallTimeMonth />
               </Box>
             </Grid>
           </Grid>
@@ -49,8 +49,8 @@ const CallTimes = ({ className, ...rest }) => {
     </Card>
   );
 };
-CallTimes.propTypes = {
+CallContainer.propTypes = {
   className: PropTypes.string
 };
 
-export default CallTimes;
+export default CallContainer;

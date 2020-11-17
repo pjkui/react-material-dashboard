@@ -18,7 +18,11 @@ import EchartRender from './EchartRender';
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.cardSection,
-    color: colors.common.white
+    color: colors.common.white,
+    paddingLeft: 0,
+  },
+  headerLay: {
+    marginRight: 12,
   }
 }));
 
@@ -36,11 +40,11 @@ const EnvTrend = ({ className, ...rest }) => {
       marginTop: '0 !important',
     },
     input: {
-      color: colors.orange['900'],
+      color: theme.palette.text.selectFond,
       borderRadius: 4,
       position: 'relative',
+      // right: 12,在这儿调节下拉列表的位置,下拉的icon会出框.
       backgroundColor: theme.palette.background.selectColor,
-      opacity: 0.2,
       border: '1px solid #e6511055',
       fontSize: 20,
       padding: '10px 26px 10px 12px',
@@ -97,6 +101,13 @@ const EnvTrend = ({ className, ...rest }) => {
   ];
 
   const optionsRaw = {
+    grid: {
+      left: 0,
+      right: 10,
+      top: 10,
+      bottom: 0,
+      containLabel: true
+    },
     tooltip: {},
     xAxis: {
       data: xAxisData,
@@ -183,6 +194,7 @@ const EnvTrend = ({ className, ...rest }) => {
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
       <CardHeader
+        className={clsx(classes.headerLay, className)}
         action={
           <NativeSelect
             id="demo-customized-select-native"

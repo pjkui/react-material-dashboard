@@ -17,7 +17,9 @@ import EchartRender from './EchartRender';
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100%',
-    backgroundColor: theme.palette.background.cardColor
+    backgroundColor: theme.palette.background.cardColor,
+    borderRadius: 10,
+    boxShadow: '-4px -4px 10px blue'
   }
 }));
 
@@ -54,7 +56,12 @@ const FaultDevice = ({ className, ...rest }) => {
   const options = {
     tooltip: {
       trigger: 'item',
-      formatter: '{a}<br />{b}:{c}({d}%)'
+      position: ['50%', '50%'],
+      backgroundColor: 'rgba(239,108,0,0.3)',
+      formatter: '{b}:{c} ~<b>{d}%</b> ',
+      textStyle: {
+        color: colors.yellow['900']
+      }
     },
     legend: {
       show: false,
